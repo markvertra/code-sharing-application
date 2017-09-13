@@ -4,8 +4,10 @@ const User               = require('../../models/user')
 const Project            = require('../../models/project')
 const bcrypt = require("bcrypt");
 
+// TODO Using known user ID until authorisation ready and can check current user
+
 router.get('/', (req, res, next) => {
-   // Using known user ID until authorisation ready
+   
    const USER_ID = "59b954dc23b101659d3c5ac5"; 
 
     User.findById(USER_ID, (err, user) => {
@@ -13,7 +15,6 @@ router.get('/', (req, res, next) => {
         res.render('settings/settings', {user: user});
   });
 });
-
 
 router.post('/edituser/:userID', (req, res, next) => {
     
@@ -32,6 +33,21 @@ router.post('/edituser/:userID', (req, res, next) => {
   });
   });
 });
+
+
+// TODO sign out of session
+router.post('/deleteuser/:userID', (req, res, next) => {
+
+    User.findByIdAndRemove(req.params.userID, (err, users) => {
+        if (err) { return next(err);}
+        User.find({}, (err, users) => {
+
+        if (err) { return next(err);}
+            // SIGN OUT
+            res.redirect('/');
+      });
+    });
+})
 
 
 module.exports = router;

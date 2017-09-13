@@ -70,16 +70,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/profile', profile);
 app.use('/admin', admin);
-<<<<<<< HEAD
 app.use('/settings', settings);
-
-
-
-
-=======
-app.use('/', profile);
->>>>>>> 86187da49f20450687a9d926f8557f242674681f
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

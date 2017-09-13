@@ -8,5 +8,9 @@ Edit Profile <%= user.username %>
     <button type="submit">Edit User</button>
 </form>
 
+<form action="/settings/deleteuser/<%= user._id %>" method="post">
+    <button type="submit">Delete Account</button>
+</form>
+
 
 
