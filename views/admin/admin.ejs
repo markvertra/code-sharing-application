@@ -43,7 +43,11 @@ Create New Project
     <label for="projectName">Project Name</label>
     <input type="text" name="projectName">
     <label for="userID">User ID</label>
-    <input type="text" name="userID">
+    <select name="userID">
+        <% users.forEach((user) => { %> 
+        <option value="<%= user._id %>"> <%= user.username %></option>
+        <% }) %>
+    </select>
     <label for="fileHTML">HTML File</label>
     <input type="text" name="fileHTML">
     <label for="fileCSS">CSS File</label>

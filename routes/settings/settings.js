@@ -16,21 +16,18 @@ router.get('/', (req, res, next) => {
   });
 });
 
+  // TODO - ADD PASSWORD VALIDATION, ADD EMAIL VALIDATION
 router.post('/edituser/:userID', (req, res, next) => {
-    
+  
   const infoUser = {
     password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)),
     email: req.body.email,
   };
   
-  User.findByIdAndUpdate(req.params.userID, infoUser, (err, users) => {
+  User.findByIdAndUpdate(req.params.userID, infoUser, (err, user) => {
 
     if (err) { return next(err) }
-    User.find({}, (err, users) => {
-      if (err) { return next(err) }
-      
       res.redirect('/');
-  });
   });
 });
 
