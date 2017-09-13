@@ -6,6 +6,9 @@ Edit Profile <%= user.username %>
     <label for="email">Email</label>
     <input type="email" name="email" value="<%= user.email %>">
     <button type="submit">Edit User</button>
+    <% if (typeof errorMessage !== "undefined") { %>
+        <div class="error-message"><%= errorMessage %></div>
+      <% } %>
 </form>
 
 <form action="/settings/deleteuser/<%= user._id %>" method="post">

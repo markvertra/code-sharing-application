@@ -12,13 +12,15 @@ router.get('/', (req, res, next) => {
 
     User.findById(USER_ID, (err, user) => {
         if (err) { return next(err) }  
+        
         res.render('settings/settings', {user: user});
   });
 });
 
   // TODO - ADD PASSWORD VALIDATION, ADD EMAIL VALIDATION
 router.post('/edituser/:userID', (req, res, next) => {
-  
+
+
   const infoUser = {
     password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)),
     email: req.body.email,
@@ -37,14 +39,16 @@ router.post('/deleteuser/:userID', (req, res, next) => {
 
     User.findByIdAndRemove(req.params.userID, (err, users) => {
         if (err) { return next(err);}
-        User.find({}, (err, users) => {
-
-        if (err) { return next(err);}
+        
             // SIGN OUT
             res.redirect('/');
       });
-    });
+ 
 })
 
+var allUsers = User.find({}, (err, users) => {
+          if (err) { return next(err);}
+          return users;
+          });
 
 module.exports = router;
