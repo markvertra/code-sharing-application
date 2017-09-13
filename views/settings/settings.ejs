@@ -1,0 +1,12 @@
+Edit Profile <%= user.username %> 
+
+<form action="/settings/edituser/<%= user._id %>" method="post">
+    <label for="password">Password</label>
+    <input type="password" name="password">
+    <label for="email">Email</label>
+    <input type="email" name="email" value="<%= user.email %>">
+    <button type="submit">Edit User</button>
+</form>
+
+
+

@@ -10,6 +10,8 @@ const session = require('express-session');
 const LocalStrategy = require("passport-local").Strategy;
 const admin = require('./routes/admin/admin');
 const index = require('./routes/index');
+const settings = require('./routes/settings/settings');
+
 
 const app = express();
 
@@ -67,6 +69,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/admin', admin);
+app.use('/settings', settings);
 
 
 
