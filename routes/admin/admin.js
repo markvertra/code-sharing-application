@@ -4,6 +4,8 @@ const User               = require('../../models/user');
 const Project            = require('../../models/project');
 const bcrypt = require("bcrypt");
 
+//TODO:- Add projects to user
+
 router.get('/', (req, res, next) => {
     User.find({}, (err, users ) => {
         if (err) { next(err);}
