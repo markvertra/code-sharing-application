@@ -1,0 +1,57 @@
+Users
+<hr>
+Create New User 
+<hr>
+<form action="/createuser" method="post">
+    <label for="username">Username</label>
+    <input type="text" value="username">
+    <label for="password">Password</label>
+    <input type="password" value="password">
+    <label for="email">Email</label>
+    <input type="email" value="email">
+    <button type="submit">Submit</button>
+</form>
+
+<br>
+<hr>
+<% users.forEach((user) => { %> 
+    Username: <%= user.username %> UserID: <%= user._id %> 
+    <form action="/edituser/<%= user._id %>" method="post">
+        <button type="submit">Edit User</button>
+    </form>
+    <form action="/deleteuser/<%= user._id %>" method="post">
+        <button type="submit">Delete User</button>
+    </form>
+<% }) %>
+<hr>
+<br>
+
+Projects
+<hr>
+Create New Project
+<hr>
+<form action="/createproject" method="post">
+    <label for="projectName">Project Name</label>
+    <input type="text" value="projectName">
+    <label for="userID">User ID</label>
+    <input type="text" value="userID">
+    <label for="fileHTML">HTML File</label>
+    <input type="text" value="fileHTML">
+    <label for="fileCSS">CSS File</label>
+    <input type="text" value="fileCSS">
+    <label for="fileCSS">JS File</label>
+    <input type="text" value="fileJS">
+    <button type="submit">Submit</button>
+</form>
+
+<hr>
+<% projects.forEach((project) => { %>
+    <%= project.name %>  <%= project._id %> 
+    <form action="/editproject/<%= project._id %>" method="post">
+        <button type="submit">Edit User</button>
+    </form>
+    <form action="/deleteproject/<%= project._id %>" method="post">
+        <button type="submit">Delete User</button>
+    </form>
+<% }) %>
+<hr>
