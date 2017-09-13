@@ -9,6 +9,7 @@ const users = require('./routes/users');
 const mongoose = require('mongoose');
 const app = express();
 require("dotenv").config();
+const passport = require('./helpers/passport');
 
 mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
 
