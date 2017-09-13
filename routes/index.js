@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require("passport");
-const User               = require('../models/user')
+const User = require('../models/user');
 const bcrypt = require("bcrypt");
 
 
@@ -16,19 +16,19 @@ router.post('/login', passport.authenticate("local-login", {
 }));
 
 router.post('/signup', (req, res, next) => {
-  
+
         const newUser = new User({
             username: req.body.username,
             password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
         });
-    
+
         if (req.body.username === "" || req.body.password === "") {
             // res.render("/signup", {
             //   errorMessage: "All fields required to sign-up"
             // });
             return;
         }
-    
+
         User.findOne({ "username": newUser.username }, "username", (err, user) => {
             if (user !== null) {
               // res.render("passport/signup", {
@@ -36,8 +36,8 @@ router.post('/signup', (req, res, next) => {
               // });
               return;
             }
-        })
-    
+        });
+
        newUser.save((err) => {
             if (err) {
                 next(err);
@@ -50,10 +50,10 @@ router.post('/signup', (req, res, next) => {
                   next(err);
                 }
                 res.redirect('http://www.bbc.co.uk');
-              })  
+              });
             }
         });
-    });  
+    });
 
 
 module.exports = router;

@@ -8,9 +8,11 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require("passport-local").Strategy;
+
 const admin = require('./routes/admin/admin');
 const index = require('./routes/index');
 const settings = require('./routes/settings/settings');
+const profile = require('./routes/profile/profile');
 
 
 const app = express();
@@ -69,11 +71,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/admin', admin);
+<<<<<<< HEAD
 app.use('/settings', settings);
 
 
 
 
+=======
+app.use('/', profile);
+>>>>>>> 86187da49f20450687a9d926f8557f242674681f
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

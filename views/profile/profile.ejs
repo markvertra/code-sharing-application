@@ -1,0 +1,22 @@
+
+<div>
+  <ul>
+    Username: <%= user.username %>
+  </ul>
+  <ul>
+    email: <%= user.email %>
+  </ul>
+  <ul>
+    role: <%= user.role %>
+  </ul>
+  <ul>
+    projects:
+    <% if (user.projectIDs.length === 0) { %>
+      <li>No projects</li>
+    <% } else { %>
+      <% user.projectIDs.forEach((project) => { %>
+        <li>project</li>
+      <% }); %>
+    <% } %>
+  </ul>
+</div>

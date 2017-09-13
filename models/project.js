@@ -8,11 +8,11 @@ const projectSchema = new Schema ({
 		fileHTML: {type: String},
 		fileCSS: {type: String},
 		fileJS: {type: String}
-        }
-    },
-    {
-        timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
-    })
+      }
+  },
+  {
+  timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
+});
 
 const Project = mongoose.model('project', projectSchema);
 module.exports = Project;
