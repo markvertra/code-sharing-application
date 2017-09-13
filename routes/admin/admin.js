@@ -30,8 +30,22 @@ router.post('/createuser', (req, res, next) => {
 
 router.post('/edituser/:userID', (req, res, next) => {
     
-    res.redirect('admin/admin');
-    })
+  const infoUser = {
+    username: req.body.username,
+    password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)),
+    email: req.body.email,
+  };
+  
+  User.findByIdAndUpdate(req.params.userID, infoUser, (err, users) => {
+
+    if (err) { return next(err) }
+    User.find({}, (err, users) => {
+      if (err) { return next(err) }
+      
+      res.redirect('/admin');
+  });
+  });
+})
 
 router.post('/deleteuser/:userID', (req, res, next) => {
     User.findByIdAndRemove(req.params.userID, (err, users) => {
@@ -53,11 +67,32 @@ router.post('/createproject', (req, res, next) => {
         fileJS: req.body.fileJS,
     })
       
-    newUser.save((err) => {
+    newProject.save((err) => {
         if (err) {return next(err)}
         res.redirect('/admin');
     })
 });
+
+router.post('/editproject/:projectID', (req, res, next) => {
+    
+    const infoProject = {
+        projectName: req.body.projectName,
+        userID: req.body.userID,
+        fileHTML: req.body.fileHTML,
+        fileCSS: req.body.fileCSS,
+        fileJS: req.body.fileJS,
+    }
+  
+  Project.findByIdAndUpdate(req.params.projectID, infoProject, (err, projects) => {
+
+    if (err) { return next(err) }
+    Project.find({}, (err, projects) => {
+      if (err) { return next(err) }
+      
+      res.redirect('/admin');
+  });
+  });
+})
 
 router.post('/deleteproject/:projectID', (req, res, next) => {
     Project.findByIdAndRemove(req.params.projectID, (err, projects) => {

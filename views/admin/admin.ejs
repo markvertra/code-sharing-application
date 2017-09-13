@@ -15,13 +15,22 @@ Create New User
 <br>
 <hr>
 <% users.forEach((user) => { %> 
+    <hr>
     Username: <%= user.username %> UserID: <%= user._id %> 
-    <form action="/admin/edituser/<%= user._id %>" method="post">
-        <button type="submit">Edit User</button>
-    </form>
+    
     <form action="/admin/deleteuser/<%= user._id %>" method="post">
         <button type="submit">Delete User</button>
     </form>
+    <form action="/admin/edituser/<%= user._id %>" method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username">
+        <label for="password">Password</label>
+        <input type="password" name="password">
+        <label for="email">Email</label>
+        <input type="email" name="email">
+        <button type="submit">Edit User</button>
+    </form>
+    <hr>
 <% }) %>
 <hr>
 <br>
@@ -30,7 +39,7 @@ Projects
 <hr>
 Create New Project
 <hr>
-<form action="/createproject" method="post">
+<form action="/admin/createproject" method="post">
     <label for="projectName">Project Name</label>
     <input type="text" name="projectName">
     <label for="userID">User ID</label>
@@ -46,12 +55,25 @@ Create New Project
 
 <hr>
 <% projects.forEach((project) => { %>
-    <%= project.name %>  <%= project._id %> 
-    <form action="/editproject/<%= project._id %>" method="post">
-        <button type="submit">Edit Project</button>
-    </form>
-    <form action="/deleteproject/<%= project._id %>" method="post">
+    <hr>
+    Project Name: <%= project.projectName %> UserID: <%= project._id %> 
+    
+    <form action="/admin/deleteproject/<%= project._id %>" method="post">
         <button type="submit">Delete Project</button>
     </form>
+    <form action="/admin/editproject/<%= project._id %>" method="post">
+        <label for="projectName">Project Name</label>
+        <input type="text" name="projectName">
+        <label for="userID">User ID</label>
+        <input type="text" name="userID">
+        <label for="fileHTML">HTML File</label>
+        <input type="text" name="fileHTML">
+        <label for="fileCSS">CSS File</label>
+        <input type="text" name="fileCSS">
+        <label for="fileCSS">JS File</label>
+        <input type="text" name="fileJS">
+        <button type="submit">Edit Project</button>
+    </form>
+    <hr>
 <% }) %>
 <hr>
