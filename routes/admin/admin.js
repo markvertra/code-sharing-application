@@ -64,12 +64,13 @@ router.post('/deleteuser/:userID', (req, res, next) => {
 
 router.post('/createproject', (req, res, next) => {
     const newProject = new Project({
-        projectName: req.body.projectName,
-        userID: req.body.userID,
-        fileHTML: req.body.fileHTML,
-        fileCSS: req.body.fileCSS,
-        fileJS: req.body.fileJS,
-    });
+      projectName: req.body.projectName,
+      userID: req.body.userID,
+      file: {fileHTML: req.body.fileHTML,
+             fileCSS: req.body.fileCSS,
+             fileJS: req.body.fileJS,
+           }
+      });
 
     newProject.save((err) => {
         if (err) {return next(err);}
@@ -85,12 +86,13 @@ router.post('/createproject', (req, res, next) => {
 
 router.post('/editproject/:projectID', (req, res, next) => {
 
-    const infoProject = {
-        projectName: req.body.projectName,
-        userID: req.body.userID,
-        fileHTML: req.body.fileHTML,
-        fileCSS: req.body.fileCSS,
-        fileJS: req.body.fileJS,
+  const infoProject = {
+      projectName: req.body.projectName,
+      userID: req.body.userID,
+      file: {fileHTML: req.body.fileHTML,
+             fileCSS: req.body.fileCSS,
+             fileJS: req.body.fileJS,
+      }
     };
 
   Project.findByIdAndUpdate(req.params.projectID, infoProject, (err, projects) => {
