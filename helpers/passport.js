@@ -44,13 +44,9 @@ passport.use('local-signup', new LocalStrategy(
               if (user) {
                   return next(null, false);
               } else {
-                  // Destructure the body
-                  const { username, email, description, password } = req.body;
-                  const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+                  const hashPass = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8), null);
                   const newUser = new User({
-                    username,
-                    email,
-                    description,
+                    username: req.body.username,
                     password: hashPass
                   });
   
@@ -61,22 +57,6 @@ passport.use('local-signup', new LocalStrategy(
               }
           });
       });
-}));
-
-passport.use('local-signup', new LocalStrategy((username, password, next) => {
-    User.findOne({ username }, (err, user) => {
-      if (err) {
-        return next(err);
-      }
-      if (!user) {
-        return next(null, false, { message: "Username does not exist" });
-      }
-      if (!bcrypt.compareSync(password, user.password)) {
-        return next(null, false, { message: "Password is incorrect" });
-      }
-  
-      return next(null, user);
-    });
 }));
 
 module.exports = passport;

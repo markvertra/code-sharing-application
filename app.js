@@ -6,8 +6,9 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const mongoose = require('mongoose');
-const passport = require('./helpers/passport');
+const passport = require('passport');
 const session = require('express-session');
+const LocalStrategy = require("passport-local").Strategy;
 
 const app = express();
 
@@ -16,6 +17,44 @@ mongoose.connect("mongodb://localhost/code-sharing-application", {useMongoClient
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+const User = require("./models/user");
+
+app.use(session({
+  secret: 'code-sharing-application',
+  resave: true,
+  saveUninitialized: true
+}));
+
+passport.serializeUser((user, cb) => {
+  cb(null, user._id);
+});
+
+passport.deserializeUser((id, cb) => {
+  User.findOne({ "_id": id }, (err, user) => {
+    if (err) { return cb(err); }
+    cb(null, user);
+  });
+});
+
+passport.use('local-login', new LocalStrategy((username, password, next) => {
+  User.findOne({ username }, (err, user) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return next(null, false, { message: "Username does not exist" });
+    }
+    if (!bcrypt.compareSync(password, user.password)) {
+      return next(null, false, { message: "Password is incorrect" });
+    }
+
+    return next(null, user);
+  });
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -27,16 +66,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 
-const User = require("./models/user");
 
-app.use(session({
-  secret: 'code-sharing-application',
-  resave: true,
-  saveUninitialized: true
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 
 
