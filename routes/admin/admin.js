@@ -75,9 +75,10 @@ router.post('/createproject', (req, res, next) => {
     newProject.save((err) => {
         if (err) {return next(err);}
 
-        User.findByIdAndUpdate(req.params.userID, (err, user) => {
+        User.findByIdAndUpdate(req.body.userID,{ 
+            $push: { projectIDs: newProject._id }}, (err, user) => {
             if (err) { return next(err); }
-            user.projectIDs.push(newProject._id);
+            console.log(user);
         
         res.redirect('/admin');
     });

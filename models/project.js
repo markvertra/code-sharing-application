@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+mongoose.Promise = require('bluebird');
 
 //TODO:- Change time file to FILE
 const projectSchema = new Schema ({
