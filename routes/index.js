@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/login', passport.authenticate("local-login", {
-    successRedirect: "http://www.yahoo.com",
+    successRedirect: "/home",
     failureRedirect: "http://www.google.com",
 }));
 
@@ -49,7 +49,7 @@ router.post('/signup', (req, res, next) => {
                 if (err) {
                   next(err);
                 }
-                res.redirect('http://www.bbc.co.uk');
+                res.redirect('home');
               });
             }
         });

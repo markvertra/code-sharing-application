@@ -14,6 +14,7 @@ const index = require('./routes/index');
 const settings = require('./routes/settings/settings');
 const profile = require('./routes/profile/profile');
 const home = require('./routes/home/home');
+const expressLayouts = require('express-ejs-layouts');
 
 
 const app = express();
@@ -23,6 +24,8 @@ mongoose.connect("mongodb://localhost/code-sharing-application", {useMongoClient
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(expressLayouts);
+app.set('layout', 'layouts/main-layout');
 
 const User = require("./models/user");
 
