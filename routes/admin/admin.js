@@ -34,8 +34,41 @@ router.post('/edituser/:userID', (req, res, next) => {
     })
 
 router.post('/deleteuser/:userID', (req, res, next) => {
-
-    res.redirect('admin/admin');
+    User.findByIdAndRemove(req.params.userID, (err, users) => {
+        if (err) { return next(err) }
+        User.find({}, (err, users) => {
+        
+        if (err) { return next(err) }
+            res.redirect('/admin')
+      });
+    });
 })
+
+router.post('/createproject', (req, res, next) => {
+    const newProject = new Project({
+        projectName: req.body.projectName,
+        userID: req.body.userID,
+        fileHTML: req.body.fileHTML,
+        fileCSS: req.body.fileCSS,
+        fileJS: req.body.fileJS,
+    })
+      
+    newUser.save((err) => {
+        if (err) {return next(err)}
+        res.redirect('/admin');
+    })
+});
+
+router.post('/deleteproject/:projectID', (req, res, next) => {
+    Project.findByIdAndRemove(req.params.projectID, (err, projects) => {
+        if (err) { return next(err) }
+        Project.find({}, (err, projects) => {
+        
+        if (err) { return next(err) }
+            res.redirect('/admin')
+      });
+    });
+})
+
 
 module.exports = router;
