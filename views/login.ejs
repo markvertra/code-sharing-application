@@ -1,0 +1,13 @@
+<div>
+    <div>
+        <h2>Hello</h2>
+        <form method="post" action="/login">
+            <input class="fun-input" type="text" name="username">
+            <input class="fun-input" type="password" name="password">
+            <% if (typeof message != "undefined") { %>
+                <div class="error-message"><%= message %></div>
+            <% } %>
+            <button type="submit">Log In</button><br><br>
+        </form>
+    </div>
+</div>

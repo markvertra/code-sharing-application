@@ -2,12 +2,7 @@ const session = require("express-session");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-
-app.use(session({
-    secret: "passport-local-strategy",
-    resave: true,
-    saveUninitialized: true
-  }));
+const User               = require('../models/user')
 
 passport.serializeUser((user, cb) => {
     cb(null, user._id);
@@ -84,6 +79,4 @@ passport.use('local-signup', new LocalStrategy((username, password, next) => {
     });
 }));
 
-
-app.use(passport.initialize());
-app.use(passport.session());
+module.exports = passport;

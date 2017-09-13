@@ -5,13 +5,13 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const index = require('./routes/index');
-const users = require('./routes/users');
 const mongoose = require('mongoose');
-const app = express();
-require("dotenv").config();
 const passport = require('./helpers/passport');
+const session = require('express-session');
 
-mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
+const app = express();
+
+mongoose.connect("mongodb://localhost/code-sharing-application", {useMongoClient: true});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,7 +26,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+
+const User = require("./models/user");
+
+app.use(session({
+  secret: 'code-sharing-application',
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
