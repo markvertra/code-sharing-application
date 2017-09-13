@@ -2,13 +2,13 @@ Users
 <hr>
 Create New User 
 <hr>
-<form action="/createuser" method="post">
+<form action="/admin/createuser" method="post">
     <label for="username">Username</label>
-    <input type="text" value="username">
+    <input type="text" name="username">
     <label for="password">Password</label>
-    <input type="password" value="password">
+    <input type="password" name="password">
     <label for="email">Email</label>
-    <input type="email" value="email">
+    <input type="email" name="email">
     <button type="submit">Submit</button>
 </form>
 
@@ -32,15 +32,15 @@ Create New Project
 <hr>
 <form action="/createproject" method="post">
     <label for="projectName">Project Name</label>
-    <input type="text" value="projectName">
+    <input type="text" name="projectName">
     <label for="userID">User ID</label>
-    <input type="text" value="userID">
+    <input type="text" name="userID">
     <label for="fileHTML">HTML File</label>
-    <input type="text" value="fileHTML">
+    <input type="text" name="fileHTML">
     <label for="fileCSS">CSS File</label>
-    <input type="text" value="fileCSS">
+    <input type="text" name="fileCSS">
     <label for="fileCSS">JS File</label>
-    <input type="text" value="fileJS">
+    <input type="text" name="fileJS">
     <button type="submit">Submit</button>
 </form>
 
@@ -48,10 +48,10 @@ Create New Project
 <% projects.forEach((project) => { %>
     <%= project.name %>  <%= project._id %> 
     <form action="/editproject/<%= project._id %>" method="post">
-        <button type="submit">Edit User</button>
+        <button type="submit">Edit Project</button>
     </form>
     <form action="/deleteproject/<%= project._id %>" method="post">
-        <button type="submit">Delete User</button>
+        <button type="submit">Delete Project</button>
     </form>
 <% }) %>
 <hr>
