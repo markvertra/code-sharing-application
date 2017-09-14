@@ -1,25 +1,21 @@
 <div class="projects-display">
   <div class="project-box create-project-box">
+      <div class="project-image">
+      
+      </div>
+      <div class="project-info">
         <a href="/project/new">Create Project</a>
+      </div>
   </div>
   <% projects.forEach((project) => { %>
     <div class="project-box">
-      PROJECT
-      <ul>
-        Project Name: <a href="/project/<%=project._id%>"><%= project.projectName %></a>
-      </ul>
-      <ul>
-        Project ID: <%= project._id %>
-      </ul>
-      <ul>
-        User: <a href="/profile/<%=project.userID._id%>"><%= project.userID.username %></a>
-      </ul>
-      <ul>
-        Files:
-          <li>JS: <%= project.file.fileJS %></li>
-          <li>CSS: <%= project.file.fileCSS %></li>
-          <li>HTML: <%= project.file.fileHTML %></li>
-      </ul>
+        <div class="project-image">
+      
+        </div>
+        <div class="project-info">
+          <p>Project: <a href="/project/<%=project._id%>"><%= project.projectName %></a></p>
+          <p>User: <a href="/profile/<%=project.userID._id%>"><%= project.userID.username %></a></p>
+        </div>
     </div>
   <% }) %>
 </div>

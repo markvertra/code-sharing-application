@@ -61,7 +61,19 @@ a {
 
 .project-box {
   border: 1px solid black;
-  padding: 10px;
   width: 250px;
   margin: 50px;
+}
+
+.project-image {
+  border-bottom: 1px solid black;
+  height: 150px;
+  width: 250px;
+}
+
+.project-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em;
+  padding: 2px 5px;
 }
