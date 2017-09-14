@@ -3,16 +3,21 @@ const router = express.Router();
 const passport = require("passport");
 const User = require('../models/user');
 const bcrypt = require("bcrypt");
+const { ensureLoggedIn } = require("connect-ensure-login");
 
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('login', { title: 'Express' });
+  res.redirect('home');
+});
+
+router.get('/login', (req, res, next) => {
+    res.render('login');
 });
 
 router.post('/login', passport.authenticate("local-login", {
     successRedirect: "/home",
-    failureRedirect: "http://www.google.com",
+    failureRedirect: "/login",
 }));
 
 router.post('/signup', (req, res, next) => {
