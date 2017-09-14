@@ -15,12 +15,12 @@ const index = require('./routes/index');
 const settings = require('./routes/settings/settings');
 const profile = require('./routes/profile/profile');
 const home = require('./routes/home/home');
+const project = require('./routes/project/project');
 const expressLayouts = require('express-ejs-layouts');
 const MongoStore         = require('connect-mongo')(session);
 const flash = require('req-flash');
 const helperPassport     = require('./helpers/passport');
 const connectLogin = require("connect-ensure-login");
-
 
 const app = express();
 
@@ -69,7 +69,7 @@ app.use('/admin', admin);
 app.use('/profile', profile);
 app.use('/home', home);
 app.use('/settings', settings);
-
+app.use('/project', project);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
