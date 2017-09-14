@@ -19,6 +19,7 @@ const expressLayouts = require('express-ejs-layouts');
 const MongoStore         = require('connect-mongo')(session);
 const flash = require('req-flash');
 const helperPassport     = require('./helpers/passport');
+const connectLogin = require("connect-ensure-login");
 
 
 const app = express();
