@@ -41,7 +41,7 @@ app.use(session({
 }));
 
 app.use(flash());
-helperPassport(passport)
+helperPassport(passport);
 
 app.use(passport.initialize());
 app.use(passport.session());

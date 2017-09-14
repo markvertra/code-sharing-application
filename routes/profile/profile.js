@@ -6,6 +6,7 @@ const Project = require('../../models/project');
 // TODO:- Add getting projectObject by ID
 
 router.get('/:profileId', (req, res, next) => {
+  console.log(req);
   let profileId = req.params.profileId;
   User.findById(profileId).populate('projectIDs').exec((err, user) => {
     if (err) {
