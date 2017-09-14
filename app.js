@@ -19,6 +19,7 @@ const expressLayouts = require('express-ejs-layouts');
 const MongoStore         = require('connect-mongo')(session);
 const flash = require('req-flash');
 const helperPassport     = require('./helpers/passport');
+const connectLogin = require("connect-ensure-login");
 
 
 const app = express();
@@ -54,11 +55,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+  if (typeof(req.user) !== "undefined"){
+    res.locals.userSignedIn = true;
+  } else {
+    res.locals.userSignedIn = false;
+  }
+  next();
+});
+
 app.use('/', index);
 app.use('/admin', admin);
 app.use('/profile', profile);
 app.use('/home', home);
 app.use('/settings', settings);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

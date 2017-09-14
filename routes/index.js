@@ -7,6 +7,8 @@ const { ensureLoggedIn } = require("connect-ensure-login");
 
 
 /* GET home page. */
+
+
 router.get('/', (req, res, next) => {
     res.redirect('/home');
 });
@@ -17,6 +19,11 @@ router.post('/login', passport.authenticate("local-login", {
     failureFlash: true,
     passReqToCallback: true
 }));
+
+router.get('/logout', (req, res, next) => {
+    req.logout();
+    res.redirect(req.headers.referer);
+});
 
 router.post('/signup', (req, res, next) => {
 
