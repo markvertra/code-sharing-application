@@ -22,12 +22,13 @@ router.post('/new', upload.any(), (req, res, next) => {
            fileJS: `/uploads/${req.user._id}/${req.body.projectName}/${req.files.filename}`,
          }
     });
+  
 
   newProject.save((err) => {
     if (err) {return next(err);}
 
     User.findByIdAndUpdate(req.user._id,{
-        $push: {projectIDs: req.user._id} }, (err, user) => {
+        $push: {projectIDs: newProject._id} }, (err, user) => {
         if (err) {return next(err);}
 
         res.redirect(req.headers.referer);
@@ -44,5 +45,7 @@ router.get('/:projectID', (req, res, next) => {
     res.render('project/project', {project});
   });
 });
+
+
 
 module.exports = router;

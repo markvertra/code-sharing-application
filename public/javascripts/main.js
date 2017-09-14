@@ -9,7 +9,7 @@ $(document).ready(function(){
     });
 
     $(".signup-link").on("click", function(){
-        $("#signup-box").css("display", "block");
+        $("#signup-box").css("display", "flex");
         $("#login-form").css("display", "none"); 
         // setTimeout(clickCloser, 100);     
     });

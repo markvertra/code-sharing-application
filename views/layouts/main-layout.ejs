@@ -13,27 +13,28 @@
     <div class="home-box">
         <a href="/">Home</a>
     </div>
-    <div class="admin-box">
-        <a href="/admin">Admin Panel</a>
-    </div>
-    <div class="settings-box">
-        <% if (userSignedIn) { %>
-            <a href="/settings">User Settings</a>
-        <% } %>
-    </div>
-    <div class="create-project-box">
-        <a href="/project/new">Create Project</a>
-    </div>
-    <div class="log-box">
+    <ul class="navbar-list">
+        <li>
+            <a href="/admin">Admin Panel</a>
+        </li>
+        <li>
+            <% if (userSignedIn) { %>
+                <a href="/settings">User Settings</a>
+            <% } %>
+        </li>
+        <li>
+            <a href="/project/new">Create Project</a>
+        </li>
         <% if (!userSignedIn) { %>
-            <div class="log-btn login-btn">
-                <h4>Log In</h4>
-            </div>
+            <li class="log-btn login-btn">
+                <p>Log In</p>
+            </li>
         <% } else { %>
-            <div class="log-btn">
+            <li class="log-btn logout-btn">
                 <a href="/logout">Log-out</a>
-            </div>
+            </li>
         <% } %>
+    </ul>
     </div>
     <div id="login-form">
         <form method="post" action="/login">
@@ -48,24 +49,25 @@
     </div>
 </div>
 <div id="signup-box">
-        <form action="/signup" method="POST">
+        <p class="close-signup">X</p>
+        <form action="/signup" method="POST" class="signup-form">
             <div>
-            <label for="username">Username:</label>
-            <input type="text" name="username">
+                <label for="username">Username:</label>
+                <input type="text" name="username">
             </div>
             <div>
-            <label for="password">Password:</label>
-            <input type="password" name="password">
+                <label for="password">Password:</label>
+                <input type="password" name="password">
             </div>
             <div>
-            <label for "email">Email Address</label>
-            <input type="email" name="email">
+                <label for "email">Email Address</label>
+                <input type="email" name="email">
             </div>
             <div>
-            <input type="submit" value="Sign Up">
+                <input type="submit" value="Sign Up">
             </div>
         </form>
-        <p class="close-signup">Close</p>
+        
 </div>
     
 

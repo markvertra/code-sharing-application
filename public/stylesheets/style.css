@@ -1,6 +1,6 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 a {
@@ -16,6 +16,13 @@ a {
   height: 50px;
   background-color: lightcyan;
   padding: 20px;
+  line-height: 50px;
+}
+
+
+.navbar-list li {
+  display: inline;
+
 }
 
 #signup-box, #login-form {
@@ -25,29 +32,46 @@ a {
 #signup-box {
   background-color: white;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  width: 250px;
+  height: 200px;
+  top: 40%;
+  left: 40%;
   padding: 20px;
   border: 1px solid black;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+#signup-box input {
+  margin: 10px 0px;
 }
 
 #login-form {
   background-color: lightcyan;
   position: absolute;
-  top: 100%;
+  top: 90px;
   right:0%;
 }
 
-.log-btn {
-  padding: 5px 10px;
+.close-signup {
   border: 1px solid black;
+  width: 10px;
 }
 
-.logout-btn a:link{
+.log-btn {
+  border: 1px solid black;
+  height: 50px;
+  padding: 0px 10px;
+  float:right;
+  margin: 0px 20px;
+}
+
+.log-btn a:link{
   text-decoration: none;
 }
 
-.logout-btn:hover{
+.log-btn:hover{
   opacity: 0.5;
 }
 
