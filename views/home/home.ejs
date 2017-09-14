@@ -1,9 +1,9 @@
-<div class="create-project-box">
-    <a href="/project/new">Create Project</a>
-</div>
 <div class="projects-display">
+  <div class="project-box create-project-box">
+        <a href="/project/new">Create Project</a>
+  </div>
   <% projects.forEach((project) => { %>
-    <div>
+    <div class="project-box">
       PROJECT
       <ul>
         Project Name: <a href="/project/<%=project._id%>"><%= project.projectName %></a>
