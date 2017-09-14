@@ -1,16 +1,15 @@
 
 <div>
-  <ul>
-    Project Name: <%= project.projectName %>
+
+  <ul class="project-info">
+    <li>Project Name: <%= project.projectName %></li>
+    <li>User: <a href="/profile/<%=project.userID._id%>"><%= project.userID.username %></a></li>
+    <li>HTML File</li>
+    <li>CSS File</li>
+    <li>JS FILE</li>
   </ul>
-  <ul>
-    User: <a href="/profile/<%=project.userID._id%>"><%= project.userID.username %></a>
-  </ul>
-  <ul>
-    Files:
-      <li>JS: <%= project.file.fileJS %></li>
-      <li>CSS: <%= project.file.fileCSS %></li>
-      <li>HTML: <%= project.file.fileHTML %></li>
-  </ul>
-  </ul>
+
+</div>
+<div class="project-canvas">
+
 </div>

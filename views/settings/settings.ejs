@@ -3,24 +3,24 @@
 <form action="/settings/edituser/<%= user._id %>" method="post">
     <div class="settings-form">
         <div class="settings-option">
-            <label for="password">Password</label>
-            <input type="password" name="password">
+            <label class="code-label" for="password">Password</label>
+            <input class="code-input" type="password" name="password">
         </div>
         <div class="settings-option">
-            <label for="email">Email</label>
-            <input type="email" name="email" value="<%= user.email %>">
+            <label class="code-label" for="email">Email</label>
+            <input class="code-input" type="email" name="email" value="<%= user.email %>">
         </div>
         <div class="settings-option">
         <% if (typeof errorMessage !== "undefined") { %>
             <div class="error-message"><%= errorMessage %></div>
         <% } %>
-        <button type="submit">Edit User</button>
+        <button class="code-btn" type="submit">Edit User</button>
         </div>
     </div>
 </form>
 
 <form action="/settings/deleteuser/<%= user._id %>" method="post">
-    <button type="submit">Delete Account</button>
+    <button class="code-btn danger-btn" type="submit">Delete Account</button>
 </form>
 
 

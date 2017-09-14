@@ -5,13 +5,13 @@
     <div class="create-admin">
         <h4>Create New User </h4>
         <form action="/admin/createuser" method="post">
-            <label for="username">Username</label>
-            <input type="text" name="username">
-            <label for="password">Password</label>
-            <input type="password" name="password">
-            <label for="email">Email</label>
-            <input type="email" name="email">
-            <button type="submit">Submit</button>
+            <label class="code-label" for="username">Username</label>
+            <input class="code-input" type="text" name="username">
+            <label class="code-label" for="password">Password</label>
+            <input class="code-input" type="password" name="password">
+            <label class="code-label" for="email">Email</label>
+            <input class="code-input" type="email" name="email">
+            <button class="code-btn" type="submit">Submit</button>
         </form>
     </div>
 
@@ -21,16 +21,16 @@
         Username: <%= user.username %> UserID: <%= user._id %> 
         
         <form action="/admin/deleteuser/<%= user._id %>" method="post">
-            <button type="submit">Delete User</button>
+            <button class="code-btn danger-btn" type="submit">Delete User</button>
         </form>
         <form action="/admin/edituser/<%= user._id %>" method="post">
-            <label for="username">Username</label>
-            <input type="text" name="username">
-            <label for="password">Password</label>
-            <input type="password" name="password">
-            <label for="email">Email</label>
-            <input type="email" name="email">
-            <button type="submit">Edit User</button>
+            <label class="code-label" for="username">Username</label>
+            <input class="code-input" type="text" name="username">
+            <label class="code-label" for="password">Password</label>
+            <input class="code-input" type="password" name="password">
+            <label class="code-label" for="email">Email</label>
+            <input class="code-input" type="email" name="email">
+            <button class="code-btn" type="submit">Edit User</button>
         </form>
     </div>
 <% }) %>
@@ -43,21 +43,21 @@
     <div class="create-admin">
         <h4>Create New Project</h4>
         <form action="/admin/createproject" method="post" enctype="multipart/form-data">
-            <label for="projectName">Project Name</label>
-            <input type="text" name="projectName">
-            <label for="userID">User ID</label>
+            <label class="code-label" for="projectName">Project Name</label>
+            <input class="code-input" type="text" name="projectName">
+            <label class="code-label" for="userID">User ID</label>
             <select name="userID">
                 <% users.forEach((user) => { %> 
                 <option value="<%= user._id %>"> <%= user.username %></option>
                 <% }) %>
             </select>
-            <label for="fileHTML">HTML File</label>
-            <input type="file" name="fileHTML">
-            <label for="fileCSS">CSS File</label>
-            <input type="file" name="fileCSS">
-            <label for="fileCSS">JS File</label>
-            <input type="file" name="fileJS">
-            <button type="submit">Submit</button>
+            <label class="code-label" for="fileHTML">HTML File</label>
+            <input class="code-input" type="file" name="fileHTML">
+            <label class="code-label" for="fileCSS">CSS File</label>
+            <input class="code-input" type="file" name="fileCSS">
+            <label class="code-label" for="fileCSS">JS File</label>
+            <input class="code-input" type="file" name="fileJS">
+            <button class="code-btn" type="submit">Submit</button>
         </form>
     </div>
 
@@ -66,18 +66,18 @@
             Project Name: <%= project.projectName %> UserID: <%= project._id %> 
             
             <form action="/admin/deleteproject/<%= project._id %>" method="post">
-                <button type="submit">Delete Project</button>
+                <button class="code-btn danger-btn" type="submit">Delete Project</button>
             </form>
             <form action="/admin/editproject/<%= project._id %>" method="post" enctype="multipart/form-data">
-                <label for="projectName">Project Name</label>
-                <input type="text" name="projectName">
-                <label for="fileHTML">HTML File</label>
-                <input type="file" name="fileHTML">
-                <label for="fileCSS">CSS File</label>
-                <input type="file" name="fileCSS">
-                <label for="fileCSS">JS File</label>
-                <input type="file" name="fileJS">
-                <button type="submit">Edit Project</button>
+                <label class="code-label" for="projectName">Project Name</label>
+                <input class="code-input" type="text" name="projectName">
+                <label class="code-label" for="fileHTML">HTML File</label>
+                <input class="code-input" type="file" name="fileHTML">
+                <label class="code-label" for="fileCSS">CSS File</label>
+                <input class="code-input" type="file" name="fileCSS">
+                <label class="code-label" for="fileCSS">JS File</label>
+                <input class="code-input" type="file" name="fileJS">
+                <button class="code-btn" type="submit">Edit Project</button>
             </form>
         </div>
     <% }) %>
