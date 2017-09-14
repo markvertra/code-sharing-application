@@ -15,7 +15,7 @@
       <li>No projects</li>
     <% } else { %>
       <% user.projectIDs.forEach((project) => { %>
-        <li>project</li>
+        <li> <%=project.projectName %></li>
       <% }); %>
     <% } %>
   </ul>

@@ -8,8 +8,13 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require("passport-local").Strategy;
-const multer  = require('multer');
 const bcrypt = require("bcrypt");
+const multer  = require('multer');
+const admin = require('./routes/admin/admin');
+const index = require('./routes/index');
+const settings = require('./routes/settings/settings');
+const profile = require('./routes/profile/profile');
+const home = require('./routes/home/home');
 const expressLayouts = require('express-ejs-layouts');
 const MongoStore         = require('connect-mongo')(session);
 const flash = require('req-flash');
@@ -57,12 +62,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-
-const index = require('./routes/index');
-const admin = require('./routes/admin/admin');
-const settings = require('./routes/settings/settings');
-const profile = require('./routes/profile/profile');
-const home = require('./routes/home/home');
 
 app.use('/', index);
 app.use('/admin', admin);

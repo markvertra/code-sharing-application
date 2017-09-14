@@ -3,14 +3,14 @@ const router = express.Router();
 const passport = require("passport");
 const User = require('../models/user');
 const bcrypt = require("bcrypt");
+const { ensureLoggedIn } = require("connect-ensure-login");
 
 
 /* GET home page. */
 
 
 router.get('/', (req, res, next) => {
-  console.log(typeof(req.user));
-  res.redirect('/home');
+    res.redirect('/home');
 });
 
 router.post('/login', passport.authenticate("local-login", {
@@ -34,9 +34,9 @@ router.post('/signup', (req, res, next) => {
         });
 
         if (req.body.username === "" || req.body.password === "" || req.body.email === "") {
-            res.render("login", {
-                errorMessage: "All fields required to sign-up"
-            });
+            // res.render("login", {
+            //     errorMessage: "All fields required to sign-up"
+            // });
             return;
         }
 
