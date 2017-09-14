@@ -3,6 +3,7 @@ const router = express.Router();
 const User               = require('../../models/user');
 const Project            = require('../../models/project');
 const bcrypt = require("bcrypt");
+const upload = multer({ dest: './public/uploads/' });
 
 //TODO:- Add projects to user
 

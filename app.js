@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require("passport-local").Strategy;
-
+const multer  = require('multer');
 const admin = require('./routes/admin/admin');
 const index = require('./routes/index');
 const settings = require('./routes/settings/settings');
