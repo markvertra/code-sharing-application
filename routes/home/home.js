@@ -7,7 +7,7 @@ const Project = require('../../models/project');
 router.get('/', (req, res, next) => {
     Project.find({}, (err, projects) => {
     if (err) { return next(err);}
-    res.render('home/home', {projects});
+    res.render('home/home', {projects: projects, "message": req.flash("error")});
     });
 });
 
