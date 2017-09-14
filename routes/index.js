@@ -9,6 +9,7 @@ const bcrypt = require("bcrypt");
 
 
 router.get('/', (req, res, next) => {
+  console.log(typeof(req.user));
   res.redirect('/home');
 });
 
@@ -21,7 +22,6 @@ router.post('/login', passport.authenticate("local-login", {
 
 router.get('/logout', (req, res, next) => {
     req.logout();
-    console.log(req.headers.referer);
     res.redirect(req.headers.referer);
 });
 

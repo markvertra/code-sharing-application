@@ -10,11 +10,6 @@ const session = require('express-session');
 const LocalStrategy = require("passport-local").Strategy;
 const multer  = require('multer');
 const bcrypt = require("bcrypt");
-const admin = require('./routes/admin/admin');
-const index = require('./routes/index');
-const settings = require('./routes/settings/settings');
-const profile = require('./routes/profile/profile');
-const home = require('./routes/home/home');
 const expressLayouts = require('express-ejs-layouts');
 const MongoStore         = require('connect-mongo')(session);
 const flash = require('req-flash');
@@ -54,11 +49,27 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+  if (typeof(req.user) !== "undefined"){
+    res.locals.userSignedIn = true;
+  } else {
+    res.locals.userSignedIn = false;
+  }
+  next();
+});
+
+const index = require('./routes/index');
+const admin = require('./routes/admin/admin');
+const settings = require('./routes/settings/settings');
+const profile = require('./routes/profile/profile');
+const home = require('./routes/home/home');
+
 app.use('/', index);
 app.use('/admin', admin);
 app.use('/profile', profile);
 app.use('/home', home);
 app.use('/settings', settings);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

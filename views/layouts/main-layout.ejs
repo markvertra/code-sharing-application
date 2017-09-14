@@ -9,10 +9,20 @@
 </head>
 <body>
 <div class="navbar">
-    <a href="/">Home</a>
-    <a href="/admin">Admin Panel</a>
-    <a href="/settings">User Settings</a>
+    <div class="home-box">
+        <a href="/">Home</a>
+    </div>
+    <div class="admin-box">
+        <a href="/admin">Admin Panel</a>
+    </div>
+    <div class="settings-box">
+        <% if (userSignedIn) { %>
+            <a href="/settings">User Settings</a>
+        <% } %>
+    </div>
+    
     <div class="login-box">
+        <% if (!userSignedIn) { %>
         <form method="post" action="/login">
             <input type="text" name="username">
             <input type="password" name="password">
@@ -21,8 +31,10 @@
             <% } %>
             <button type="submit">Log In</button><br><br>
         </form>
+        <% } %>
     </div>
     <div class="signup-box">
+        <% if (!userSignedIn) { %>
         <form action="/signup" method="POST">
             <div>
             <label for="username">Username:</label>
@@ -40,10 +52,15 @@
             <input type="submit" value="Sign Up">
             </div>
         </form>
+        <% } %>
     </div>
-    <div class="logout">
-        <a href="/logout">Log-out</a>
-    </div>
+    
+        <div class="logout">
+            <% if (userSignedIn) { %>
+            <a href="/logout">Log-out</a>
+            <% } %>
+        </div>
+    
 </div>
 
 <%- body -%>
