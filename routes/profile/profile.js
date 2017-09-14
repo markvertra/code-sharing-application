@@ -3,8 +3,6 @@ const router = express.Router();
 const User = require('../../models/user');
 const Project = require('../../models/project');
 
-// TODO:- Add getting projectObject by ID
-
 router.get('/:profileId', (req, res, next) => {
   console.log(req);
   let profileId = req.params.profileId;
