@@ -11,12 +11,14 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
-  res.render('login');  
+  res.render('login', { "message": req.flash("error") });  
 })
 
 router.post('/login', passport.authenticate("local-login", {
     successRedirect: "/",
-    failureRedirect: "http://www.google.com",
+    failureRedirect: "/login",
+    failureFlash: true,
+    passReqToCallback: true
 }));
 
 router.post('/signup', (req, res, next) => {
