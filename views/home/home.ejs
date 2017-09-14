@@ -1,4 +1,4 @@
- 
+
 <div class="projects-display">
   <% projects.forEach((project) => { %>
     <div>
@@ -10,7 +10,7 @@
         Project ID: <%= project._id %>
       </ul>
       <ul>
-        User: <%= project.userID.username %>
+        User: <a href="/profile/<%=project.userID._id%>"><%= project.userID.username %></a>
       </ul>
       <ul>
         Files:
