@@ -10,13 +10,9 @@ router.get('/', (req, res, next) => {
   res.redirect('/home');
 });
 
-router.get('/login', (req, res, next) => {
-  res.render('login', { "message": req.flash("error") });  
-})
-
 router.post('/login', passport.authenticate("local-login", {
     successRedirect: "/",
-    failureRedirect: "/login",
+    failureRedirect: "/",
     failureFlash: true,
     passReqToCallback: true
 }));
@@ -25,17 +21,27 @@ router.post('/signup', (req, res, next) => {
 
         const newUser = new User({
             username: req.body.username,
-            password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+            password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)),
+            email: req.body.email
         });
 
-        if (req.body.username === "" || req.body.password === "") {
-            // res.render("/signup", {
-            //   errorMessage: "All fields required to sign-up"
-            // });
+        if (req.body.username === "" || req.body.password === "" || req.body.email === "") {
+            res.render("login", {
+                errorMessage: "All fields required to sign-up"
+            });
             return;
         }
 
         User.findOne({ "username": newUser.username }, "username", (err, user) => {
+            if (user !== null) {
+              // res.render("passport/signup", {
+              //   errorMessage: "That username already exists"
+              // });
+              return;
+            }
+        });
+
+        User.findOne({ "email": newUser.email }, "email", (err, user) => {
             if (user !== null) {
               // res.render("passport/signup", {
               //   errorMessage: "That username already exists"
