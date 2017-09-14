@@ -18,11 +18,12 @@ a {
   padding: 20px;
 }
 
-.signup-box, .login-form {
+#signup-box, .login-form {
   display: none;
 }
 
-.signup-box {
+#signup-box {
+  background-color: white;
   position: absolute;
   top: 50%;
   left: 50%;
