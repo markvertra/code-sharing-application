@@ -16,6 +16,7 @@ const settings = require('./routes/settings/settings');
 const profile = require('./routes/profile/profile');
 const home = require('./routes/home/home');
 const project = require('./routes/project/project');
+const api = require('./routes/api/api');
 const expressLayouts = require('express-ejs-layouts');
 const MongoStore         = require('connect-mongo')(session);
 const flash = require('req-flash');
@@ -65,6 +66,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', index);
+app.use('/api', api);
 app.use('/admin', admin);
 app.use('/profile', profile);
 app.use('/home', home);

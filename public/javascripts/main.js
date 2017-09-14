@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    
+    // Files to appear and disappear login and sign-up
     $(".main-content").click(function(){
         $('#login-form').hide();
         $('#signup-box').hide();
@@ -15,29 +15,30 @@ $(document).ready(function(){
         $("#login-form").css("display", "none"); 
     });
 
-    $(".close-signup").on("click", function(){ 
-        $("#signup-box").css("display", "none"); 
+    // AJAX request to check user log-in status on new project
+    
+    $(".new-project-submit").on("click", ()=> {
+        isUserLoggedIn();
     });
 
-    $(".project-image").on("click", function(){
-        const imageDiv = ($(this).next());
-        imageDiv.find(".project-link").click()
-    })
-    
+
 });
 
-function clickCloser() {
-    $(document).one("click", function(e) {
-        if( e.target.id != 'signup-box') {
-            $("#signup-box").hide();
-                }
-            });
+function isUserLoggedIn() {
+    $.ajax({
+        url: "/api/user",
+        method: "get",
+        success: (res) => {
+            serveSignup(res.user)
+        },
+        failure: (err) => {
+            console.log(err);
         }
+    });
+}
 
-function clickCloserTwo() {
-    $(document).one("click", function(e) {
-        if( e.target.id != 'login-form') {
-            $("#login-form").hide();
-                }
-            });
-        }
+function serveSignup (bool) {
+    if (!bool) {
+        event.preventDefault()
+        $("#signup-box").css("display", "flex");
+}};
