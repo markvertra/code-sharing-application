@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const User               = require('../../models/user');
-const Project            = require('../../models/project');
+const User = require('../../models/user');
+const Project = require('../../models/project');
 const bcrypt = require("bcrypt");
 const multer = require("multer");
 const upload = multer({ dest: './public/uploads/' });
@@ -15,8 +15,6 @@ router.get('/', (req, res, next) => {
     });
     });
 });
-
-
 
 router.post('/createuser', (req, res, next) => {
     const newUser = new User({
@@ -75,11 +73,11 @@ router.post('/createproject', (req, res, next) => {
     newProject.save((err) => {
         if (err) {return next(err);}
 
-        User.findByIdAndUpdate(req.body.userID,{ 
+        User.findByIdAndUpdate(req.body.userID,{
             $push: { projectIDs: newProject._id }}, (err, user) => {
             if (err) { return next(err); }
             console.log(user);
-        
+
         res.redirect('/admin');
     });
     });
