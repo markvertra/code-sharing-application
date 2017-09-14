@@ -1,17 +1,18 @@
 $(document).ready(function(){
 
     
-
-
+    $(".main-content").click(function(){
+        $('#login-form').hide();
+        $('#signup-box').hide();
+      })
+    
     $(".login-btn").on("click", function(){
         $("#login-form").css("display", "block");
-        // setTimeout(clickCloserTwo, 100);
-    });
+    });    
 
     $(".signup-link").on("click", function(){
         $("#signup-box").css("display", "flex");
         $("#login-form").css("display", "none"); 
-        // setTimeout(clickCloser, 100);     
     });
 
     $(".close-signup").on("click", function(){ 
