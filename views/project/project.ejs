@@ -1,4 +1,16 @@
 
 <div>
-  HI!
+  <ul>
+    Project Name: <%= project.projectName %>
+  </ul>
+  <ul>
+    User: <a href="/profile/<%=project.userID._id%>"><%= project.userID.username %></a>
+  </ul>
+  <ul>
+    Files:
+      <li>JS: <%= project.file.fileJS %></li>
+      <li>CSS: <%= project.file.fileCSS %></li>
+      <li>HTML: <%= project.file.fileHTML %></li>
+  </ul>
+  </ul>
 </div>
