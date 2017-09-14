@@ -16,6 +16,9 @@ const settings = require('./routes/settings/settings');
 const profile = require('./routes/profile/profile');
 const home = require('./routes/home/home');
 const expressLayouts = require('express-ejs-layouts');
+const MongoStore         = require('connect-mongo')(session);
+const flash = require('req-flash');
+const helperPassport     = require('./helpers/passport');
 
 
 const app = express();
@@ -33,38 +36,12 @@ const User = require("./models/user");
 app.use(session({
   secret: 'code-sharing-application',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new MongoStore( { mongooseConnection: mongoose.connection })
 }));
 
-// app.use(flash());
-
-passport.serializeUser((user, cb) => {
-  cb(null, user._id);
-});
-
-passport.deserializeUser((id, cb) => {
-  User.findOne({ "_id": id }, (err, user) => {
-    if (err) { return cb(err); }
-    cb(null, user);
-  });
-});
-
-passport.use(new LocalStrategy({
-}, (req, username, password, next) => {
-  User.findOne({ username }, (err, user) => {
-    if (err) {
-      return next(err);
-    }
-    if (!user) {
-      return next(null, false, { message: "Username does not exist" });
-    }
-    if (!bcrypt.compareSync(password, user.password)) {
-      return next(null, false, { message: "Password is incorrect" });
-    }
-
-    return next(null, user);
-  });
-}));
+app.use(flash());
+helperPassport(passport)
 
 app.use(passport.initialize());
 app.use(passport.session());

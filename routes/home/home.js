@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
   Project.find({}).populate('userID', 'username').exec((err, projects) => {
     if (err) {next(err);}
     console.log(projects);
-    res.render('home/home', {projects});
+    res.render('home/home', {projects, "message": req.flash("error")});
   });
 });
 
