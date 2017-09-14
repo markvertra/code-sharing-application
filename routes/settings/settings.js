@@ -6,13 +6,17 @@ const bcrypt = require("bcrypt");
 
 // TODO Using known user ID until authorisation ready and can check current user
 
-router.get('/', (req, res, next) => {
+router.get('/', ensureAuthenticated, (req, res, next) => {
 
     User.findById(req.user.id, (err, user) => {
         if (err) { return next(err) }  
         
         res.render('settings/settings', {user: user});
   });
+});
+
+router.get('/logout', (req, res, next) => {
+  res.redirect('http://www.google.com');
 });
 
   // TODO - ADD PASSWORD VALIDATION, ADD EMAIL VALIDATION
@@ -44,9 +48,13 @@ router.post('/deleteuser/:userID', (req, res, next) => {
  
 })
 
-var allUsers = User.find({}, (err, users) => {
-          if (err) { return next(err);}
-          return users;
-          });
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next(); 
+    } else {
+      res.redirect('/')
+    }
+}
+
 
 module.exports = router;

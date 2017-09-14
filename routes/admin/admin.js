@@ -6,8 +6,6 @@ const bcrypt = require("bcrypt");
 const multer = require("multer");
 const upload = multer({ dest: './public/uploads/' });
 
-//TODO:- Add projects to user
-
 router.get('/', (req, res, next) => {
     User.find({}, (err, users ) => {
         if (err) { next(err);}
@@ -108,6 +106,8 @@ router.post('/editproject/:projectID', (req, res, next) => {
   });
   });
 });
+
+// TODO Remove deleted project from user
 
 router.post('/deleteproject/:projectID', (req, res, next) => {
     Project.findByIdAndRemove(req.params.projectID, (err, projects) => {
