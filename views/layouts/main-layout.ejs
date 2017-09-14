@@ -40,11 +40,12 @@
             <% if (typeof message != "undefined") { %>
                 <div class="error-message"><%= message %></div>
             <% } %>
-            <button type="submit">Log In</button><br><br>
+            <button type="submit" class="log-btn login-submit-btn">Log In</button><br><br>
         </form>
         <h5>Already Registered? <span class="signup-link">Sign Up</span></h5>
     </div>
-    <div class="signup-box">
+</div>
+<div class="signup-box">
         <form action="/signup" method="POST">
             <div>
             <label for="username">Username:</label>
@@ -63,9 +64,8 @@
             </div>
         </form>
         <p class="close-signup">Close</p>
-    </div>
-    
 </div>
+    
 
 <%- body -%>
 

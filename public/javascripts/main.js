@@ -6,6 +6,7 @@ $(document).ready(function(){
 
     $(".signup-link").on("click", function(){
         $(".signup-box").css("display", "block");
+        $(".login-form").css("display", "none");
     });
 
     $(".close-signup").on("click", function(){ 
