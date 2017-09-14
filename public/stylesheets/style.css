@@ -18,7 +18,7 @@ a {
   padding: 20px;
 }
 
-#signup-box, .login-form {
+#signup-box, #login-form {
   display: none;
 }
 
@@ -31,7 +31,7 @@ a {
   border: 1px solid black;
 }
 
-.login-form {
+#login-form {
   background-color: lightcyan;
   position: absolute;
   top: 100%;

@@ -60,13 +60,13 @@ router.post('/deleteuser/:userID', (req, res, next) => {
     });
 });
 
-router.post('/createproject', (req, res, next) => {
+router.post('/createproject', upload.any(), (req, res, next) => {
     const newProject = new Project({
       projectName: req.body.projectName,
       userID: req.body.userID,
-      file: {fileHTML: req.body.fileHTML,
-             fileCSS: req.body.fileCSS,
-             fileJS: req.body.fileJS,
+      file: {fileHTML: `/uploads/${req.user._id}/${req.body.projectName}/${req.files.filename}`,
+             fileCSS: `/uploads/${req.user._id}/${req.body.projectName}/${req.files.filename}`,
+             fileJS: `/uploads/${req.user._id}/${req.body.projectName}/${req.files.filename}`,
            }
       });
 
@@ -83,14 +83,14 @@ router.post('/createproject', (req, res, next) => {
     });
 });
 
-router.post('/editproject/:projectID', (req, res, next) => {
+router.post('/editproject/:projectID', upload.any(), (req, res, next) => {
 
   const infoProject = {
       projectName: req.body.projectName,
       userID: req.body.userID,
-      file: {fileHTML: req.body.fileHTML,
-             fileCSS: req.body.fileCSS,
-             fileJS: req.body.fileJS,
+      file: {   fileHTML: `/uploads/${req.user._id}/${req.body.projectName}/${req.files.filename}`,
+                fileCSS: `/uploads/${req.user._id}/${req.body.projectName}/${req.files.filename}`,
+                fileJS: `/uploads/${req.user._id}/${req.body.projectName}/${req.files.filename}`,
       }
     };
 

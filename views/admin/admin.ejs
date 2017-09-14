@@ -39,7 +39,7 @@ Projects
 <hr>
 Create New Project
 <hr>
-<form action="/admin/createproject" method="post">
+<form action="/admin/createproject" method="post" enctype="multipart/form-data">
     <label for="projectName">Project Name</label>
     <input type="text" name="projectName">
     <label for="userID">User ID</label>
@@ -65,11 +65,9 @@ Create New Project
     <form action="/admin/deleteproject/<%= project._id %>" method="post">
         <button type="submit">Delete Project</button>
     </form>
-    <form action="/admin/editproject/<%= project._id %>" method="post">
+    <form action="/admin/editproject/<%= project._id %>" method="post" enctype="multipart/form-data">
         <label for="projectName">Project Name</label>
         <input type="text" name="projectName">
-        <label for="userID">User ID</label>
-        <input type="text" name="userID">
         <label for="fileHTML">HTML File</label>
         <input type="file" name="fileHTML">
         <label for="fileCSS">CSS File</label>

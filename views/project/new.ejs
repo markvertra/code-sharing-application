@@ -1,13 +1,13 @@
 Create New Project
 
-<form action="/project/new" method="post">
+<form action="/project/new" method="post" enctype="multipart/form-data">
     <label for="projectName">Project Name</label>
     <input type="text" name="projectName">
     <label for="fileHTML">HTML File</label>
-    <input type="text" name="fileHTML">
+    <input type="file" name="fileHTML">
     <label for="fileCSS">CSS File</label>
-    <input type="text" name="fileCSS">
+    <input type="file" name="fileCSS">
     <label for="fileCSS">JS File</label>
-    <input type="text" name="fileJS">
+    <input type="file" name="fileJS">
     <button type="submit">Submit</button>
 </form>

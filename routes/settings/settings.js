@@ -14,10 +14,6 @@ router.get('/', ensureAuthenticated, (req, res, next) => {
   });
 });
 
-router.get('/logout', (req, res, next) => {
-  res.redirect('http://www.google.com');
-});
-
   // TODO - ADD PASSWORD VALIDATION, ADD EMAIL VALIDATION
 router.post('/edituser/:userID', (req, res, next) => {
 

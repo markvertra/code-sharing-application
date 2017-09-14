@@ -10,10 +10,9 @@
   <% projects.forEach((project) => { %>
     <div class="project-box">
         <div class="project-image">
-      
         </div>
         <div class="project-info">
-          <p>Project: <a href="/project/<%=project._id%>"><%= project.projectName %></a></p>
+          <p>Project: <a class="project-link" href="/project/<%=project._id%>"><%= project.projectName %></a></p>
           <p>User: <a href="/profile/<%=project.userID._id%>"><%= project.userID.username %></a></p>
         </div>
     </div>
