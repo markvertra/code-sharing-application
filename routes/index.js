@@ -7,11 +7,15 @@ const bcrypt = require("bcrypt");
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('login', { title: 'Express' });
+  res.redirect('/home');
 });
 
+router.get('/login', (req, res, next) => {
+  res.render('login');  
+})
+
 router.post('/login', passport.authenticate("local-login", {
-    successRedirect: "/home",
+    successRedirect: "/",
     failureRedirect: "http://www.google.com",
 }));
 

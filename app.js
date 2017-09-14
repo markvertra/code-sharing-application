@@ -9,12 +9,14 @@ const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require("passport-local").Strategy;
 const multer  = require('multer');
+const bcrypt = require("bcrypt");
 const admin = require('./routes/admin/admin');
 const index = require('./routes/index');
 const settings = require('./routes/settings/settings');
 const profile = require('./routes/profile/profile');
 const home = require('./routes/home/home');
 const expressLayouts = require('express-ejs-layouts');
+const flash = require('req-flash');
 
 
 const app = express();
@@ -35,6 +37,8 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use(flash());
+
 passport.serializeUser((user, cb) => {
   cb(null, user._id);
 });
@@ -46,7 +50,9 @@ passport.deserializeUser((id, cb) => {
   });
 });
 
-passport.use('local-login', new LocalStrategy((username, password, next) => {
+passport.use('local-login', new LocalStrategy({
+  passReqToCallback: true
+}, (req, username, password, next) => {
   User.findOne({ username }, (err, user) => {
     if (err) {
       return next(err);
