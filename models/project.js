@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.Promise = require('bluebird');
 
-//TODO:- Change time file to FILE
+//TODO:- Change file to FILE
 const projectSchema = new Schema ({
 	projectName: {type: String},
 	userID: {type: Schema.Types.ObjectId, ref: 'User'},
@@ -16,5 +16,5 @@ const projectSchema = new Schema ({
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });
 
-const Project = mongoose.model('project', projectSchema);
+const Project = mongoose.model('Project', projectSchema);
 module.exports = Project;
