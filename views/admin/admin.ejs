@@ -1,81 +1,85 @@
-Users
-<hr>
-Create New User 
-<hr>
-<form action="/admin/createuser" method="post">
-    <label for="username">Username</label>
-    <input type="text" name="username">
-    <label for="password">Password</label>
-    <input type="password" name="password">
-    <label for="email">Email</label>
-    <input type="email" name="email">
-    <button type="submit">Submit</button>
-</form>
+<div class="admin-section">
 
-<br>
-<hr>
+    <h3>Edit Users</h3>
+
+    <div class="create-admin">
+        <h4>Create New User </h4>
+        <form action="/admin/createuser" method="post">
+            <label for="username">Username</label>
+            <input type="text" name="username">
+            <label for="password">Password</label>
+            <input type="password" name="password">
+            <label for="email">Email</label>
+            <input type="email" name="email">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+
 <% users.forEach((user) => { %> 
-    <hr>
-    Username: <%= user.username %> UserID: <%= user._id %> 
-    
-    <form action="/admin/deleteuser/<%= user._id %>" method="post">
-        <button type="submit">Delete User</button>
-    </form>
-    <form action="/admin/edituser/<%= user._id %>" method="post">
-        <label for="username">Username</label>
-        <input type="text" name="username">
-        <label for="password">Password</label>
-        <input type="password" name="password">
-        <label for="email">Email</label>
-        <input type="email" name="email">
-        <button type="submit">Edit User</button>
-    </form>
-    <hr>
+    <div class="admin-list-item">
+        Username: <%= user.username %> UserID: <%= user._id %> 
+        
+        <form action="/admin/deleteuser/<%= user._id %>" method="post">
+            <button type="submit">Delete User</button>
+        </form>
+        <form action="/admin/edituser/<%= user._id %>" method="post">
+            <label for="username">Username</label>
+            <input type="text" name="username">
+            <label for="password">Password</label>
+            <input type="password" name="password">
+            <label for="email">Email</label>
+            <input type="email" name="email">
+            <button type="submit">Edit User</button>
+        </form>
+    </div>
 <% }) %>
-<hr>
-<br>
+</div>
 
-Projects
-<hr>
-Create New Project
-<hr>
-<form action="/admin/createproject" method="post" enctype="multipart/form-data">
-    <label for="projectName">Project Name</label>
-    <input type="text" name="projectName">
-    <label for="userID">User ID</label>
-    <select name="userID">
-        <% users.forEach((user) => { %> 
-        <option value="<%= user._id %>"> <%= user.username %></option>
-        <% }) %>
-    </select>
-    <label for="fileHTML">HTML File</label>
-    <input type="file" name="fileHTML">
-    <label for="fileCSS">CSS File</label>
-    <input type="file" name="fileCSS">
-    <label for="fileCSS">JS File</label>
-    <input type="file" name="fileJS">
-    <button type="submit">Submit</button>
-</form>
-
-<hr>
-<% projects.forEach((project) => { %>
-    <hr>
-    Project Name: <%= project.projectName %> UserID: <%= project._id %> 
+<div class="admin-section">
     
-    <form action="/admin/deleteproject/<%= project._id %>" method="post">
-        <button type="submit">Delete Project</button>
-    </form>
-    <form action="/admin/editproject/<%= project._id %>" method="post" enctype="multipart/form-data">
-        <label for="projectName">Project Name</label>
-        <input type="text" name="projectName">
-        <label for="fileHTML">HTML File</label>
-        <input type="file" name="fileHTML">
-        <label for="fileCSS">CSS File</label>
-        <input type="file" name="fileCSS">
-        <label for="fileCSS">JS File</label>
-        <input type="file" name="fileJS">
-        <button type="submit">Edit Project</button>
-    </form>
-    <hr>
-<% }) %>
-<hr>
+    <h3>Edit Projects</h3>
+    
+    <div class="create-admin">
+        <h4>Create New Project</h4>
+        <form action="/admin/createproject" method="post" enctype="multipart/form-data">
+            <label for="projectName">Project Name</label>
+            <input type="text" name="projectName">
+            <label for="userID">User ID</label>
+            <select name="userID">
+                <% users.forEach((user) => { %> 
+                <option value="<%= user._id %>"> <%= user.username %></option>
+                <% }) %>
+            </select>
+            <label for="fileHTML">HTML File</label>
+            <input type="file" name="fileHTML">
+            <label for="fileCSS">CSS File</label>
+            <input type="file" name="fileCSS">
+            <label for="fileCSS">JS File</label>
+            <input type="file" name="fileJS">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <% projects.forEach((project) => { %>
+        <div class="admin-list-item">
+            Project Name: <%= project.projectName %> UserID: <%= project._id %> 
+            
+            <form action="/admin/deleteproject/<%= project._id %>" method="post">
+                <button type="submit">Delete Project</button>
+            </form>
+            <form action="/admin/editproject/<%= project._id %>" method="post" enctype="multipart/form-data">
+                <label for="projectName">Project Name</label>
+                <input type="text" name="projectName">
+                <label for="fileHTML">HTML File</label>
+                <input type="file" name="fileHTML">
+                <label for="fileCSS">CSS File</label>
+                <input type="file" name="fileCSS">
+                <label for="fileCSS">JS File</label>
+                <input type="file" name="fileJS">
+                <button type="submit">Edit Project</button>
+            </form>
+        </div>
+    <% }) %>
+    
+</div>

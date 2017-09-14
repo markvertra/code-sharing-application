@@ -7,6 +7,22 @@ a {
   color: #00B7FF;
 }
 
+.main-content {
+  margin: auto;
+  width: 90%;
+  padding: 40px 20px;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+}
+
 /* NAVBAR STYLES */
 
 .navbar {
@@ -52,6 +68,7 @@ a {
   position: absolute;
   top: 90px;
   right:0%;
+  padding: 10px;
 }
 
 .close-signup {
@@ -100,4 +117,41 @@ a {
   justify-content: space-between;
   font-size: 0.8em;
   padding: 2px 5px;
+}
+
+/* SETTINGS STYLES */
+
+.settings-form {
+  display: flex; 
+  flex-direction: column;
+}
+
+.settings-option input{
+  margin: 15px;
+}
+
+/* ADMIN STYLES */
+
+.admin-section {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 10px;
+  margin: 10px;
+}
+
+.create-admin {
+  border: 2px solid black;
+  padding: 10px;
+}
+
+.admin-list-item {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 5px 0px;
+}
+
+/* FOOTER STYLES */
+
+.footer {
+  background-color: lightcyan;
+  height: 100px;
 }
