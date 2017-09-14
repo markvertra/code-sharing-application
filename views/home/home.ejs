@@ -1,6 +1,8 @@
-<div>
-    <div>
-        <h2>Hello</h2>
+ <div class="navbar">
+    
+    <a href="/admin">Admin Panel</a>
+    <a href="/settings">User Settings</a>
+    <div class="login-box">
         <form method="post" action="/login">
             <input type="text" name="username">
             <input type="password" name="password">
@@ -10,25 +12,27 @@
             <button type="submit">Log In</button><br><br>
         </form>
     </div>
+    <div class="signup-box">
+      <form action="/signup" method="POST">
+          <div>
+            <label for="username">Username:</label>
+            <input type="text" name="username">
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="password" name="password">
+          </div>
+          <div>
+            <label for "email">Email Address</label>
+            <input type="email" name="email">
+          </div>
+          <div>
+            <input type="submit" value="Sign Up">
+          </div>
+      </form>
+    </div>
 </div>
-<div>
-<form action="/signup" method="POST">
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" name="username">
-    </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" name="password">
-    </div>
-    <div>
-      <label for "email">Email Address</label>
-      <input type="email" name="email">
-    </div>
-    <div>
-      <input type="submit" value="Sign Up">
-    </div>
-</form>
+<div class="projects-display">
   <% projects.forEach((project) => { %>
     <div>
       PROJECT

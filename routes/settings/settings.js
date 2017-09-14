@@ -7,10 +7,8 @@ const bcrypt = require("bcrypt");
 // TODO Using known user ID until authorisation ready and can check current user
 
 router.get('/', (req, res, next) => {
-   
-   const USER_ID = "59b954dc23b101659d3c5ac5"; 
 
-    User.findById(USER_ID, (err, user) => {
+    User.findById(req.user.id, (err, user) => {
         if (err) { return next(err) }  
         
         res.render('settings/settings', {user: user});
