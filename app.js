@@ -9,6 +9,7 @@ const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
+const multer  = require('multer');
 const admin = require('./routes/admin/admin');
 const index = require('./routes/index');
 const settings = require('./routes/settings/settings');
@@ -35,6 +36,8 @@ app.use(session({
   saveUninitialized: true
 }));
 
+// app.use(flash());
+
 passport.serializeUser((user, cb) => {
   cb(null, user._id);
 });
@@ -46,7 +49,8 @@ passport.deserializeUser((id, cb) => {
   });
 });
 
-passport.use('local-login', new LocalStrategy((username, password, next) => {
+passport.use(new LocalStrategy({
+}, (req, username, password, next) => {
   User.findOne({ username }, (err, user) => {
     if (err) {
       return next(err);
