@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Code Sharing Application</title>
 </head>
@@ -21,8 +22,18 @@
         <% } %>
     </div>
     
-    <div class="login-box">
+    <div class="log-box">
         <% if (!userSignedIn) { %>
+            <div class="log-btn login-btn">
+                <h4>Log In</h4>
+            </div>
+        <% } else { %>
+            <div class="log-btn">
+                <a href="/logout">Log-out</a>
+            </div>
+        <% } %>
+    </div>
+    <div class="login-form">
         <form method="post" action="/login">
             <input type="text" name="username">
             <input type="password" name="password">
@@ -31,10 +42,9 @@
             <% } %>
             <button type="submit">Log In</button><br><br>
         </form>
-        <% } %>
+        <h5>Already Registered? <span class="signup-link">Sign Up</span></h5>
     </div>
     <div class="signup-box">
-        <% if (!userSignedIn) { %>
         <form action="/signup" method="POST">
             <div>
             <label for="username">Username:</label>
@@ -52,14 +62,8 @@
             <input type="submit" value="Sign Up">
             </div>
         </form>
-        <% } %>
+        <p class="close-signup">Close</p>
     </div>
-    
-        <div class="logout">
-            <% if (userSignedIn) { %>
-            <a href="/logout">Log-out</a>
-            <% } %>
-        </div>
     
 </div>
 
