@@ -25,6 +25,11 @@
             <% } %>
         </li>
         <li>
+            <% if (userSignedIn) { %>
+            <a href="/profile/myprofile">My Profile</a>
+            <% } %>
+        </li>
+        <li>
             <a href="/project/new">Create Project</a>
         </li>
         <% if (!userSignedIn) { %>
