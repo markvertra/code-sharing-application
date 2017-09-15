@@ -10,9 +10,14 @@ router.get('/new', (req, res, next) => {
   res.render('project/new');
 });
 
+<<<<<<< HEAD
 router.post('/new', upload.any(), (req, res, next) => {
  //TODO:- Look if is login
 
+=======
+//TODO:- Look if is login
+router.post('/new', (req, res, next) => {
+>>>>>>> db4716716685e4119779cc8a917bc0ba41f979a1
   const newProject = new Project({
     projectName: req.body.projectName,
     userID: req.user._id,
@@ -27,6 +32,7 @@ router.post('/new', upload.any(), (req, res, next) => {
     if (err) {return next(err);}
 
     User.findByIdAndUpdate(req.user._id,{
+<<<<<<< HEAD
       $push: {projectIDs: newProject._id} }, (err, user) => {
       if (err) {return next(err);}
 
@@ -103,15 +109,20 @@ router.post("/signup",  upload.any(), (req, res, next) => {
           })
         });
       }
+=======
+        $push: {projectIDs: newProject._id} }, (err, user) => {
+        if (err) {return next(err);}
+        res.redirect(req.headers.referer);
+    });
+>>>>>>> db4716716685e4119779cc8a917bc0ba41f979a1
   });
 });
 
 router.get('/:projectID', (req, res, next) => {
   let projectID = req.params.projectID;
   Project.findById(projectID).populate('userID', 'username _id').exec((err, project) => {
-    if (err) {
-      console.log("OK");
-      next(err);}
+    if (err) {next(err);}
+
     res.render('project/project', {project});
   });
 });

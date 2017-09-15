@@ -4,12 +4,23 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const multer = require('multer');
+const expressLayouts = require('express-ejs-layouts');
+
+//Session
 const passport = require('passport');
 const session = require('express-session');
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo')(session);
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
-const multer  = require('multer');
+const flash = require('req-flash');
+const connectLogin = require("connect-ensure-login");
+
+//helpers
+const helperPassport = require('./helpers/passport');
+
+//Routes
 const admin = require('./routes/admin/admin');
 const index = require('./routes/index');
 const settings = require('./routes/settings/settings');
@@ -17,14 +28,10 @@ const profile = require('./routes/profile/profile');
 const home = require('./routes/home/home');
 const project = require('./routes/project/project');
 const api = require('./routes/api/api');
-const expressLayouts = require('express-ejs-layouts');
-const MongoStore         = require('connect-mongo')(session);
-const flash = require('req-flash');
-const helperPassport     = require('./helpers/passport');
-const connectLogin = require("connect-ensure-login");
 
 const app = express();
 
+//Database
 mongoose.connect("mongodb://localhost/code-sharing-application", {useMongoClient: true});
 
 // view engine setup
@@ -33,8 +40,6 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', 'layouts/main-layout');
 
-const User = require("./models/user");
-
 app.use(session({
   secret: 'code-sharing-application',
   resave: true,
@@ -42,13 +47,13 @@ app.use(session({
   store: new MongoStore( { mongooseConnection: mongoose.connection })
 }));
 
+//setup session
 app.use(flash());
 helperPassport(passport);
-
 app.use(passport.initialize());
 app.use(passport.session());
 
-// uncomment after placing your favicon in /public
+//setup utils
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -65,6 +70,7 @@ app.use((req, res, next) => {
   next();
 });
 
+//setup routes
 app.use('/', index);
 app.use('/api', api);
 app.use('/admin', admin);
@@ -86,7 +92,6 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
   if (res.headerSent) {
     console.log(err);
     res.status(err.status || 500);

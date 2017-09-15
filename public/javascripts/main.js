@@ -7,18 +7,18 @@ $(document).ready(function(){
         $('#signup-box').hide();
         $('#project-signup-box').hide();
       })
-    
+
     $(".login-btn").on("click", function(){
         $("#login-form").css("display", "block");
-    });    
+    });
 
     $(".signup-link").on("click", function(){
         $("#signup-box").css("display", "flex");
-        $("#login-form").css("display", "none"); 
+        $("#login-form").css("display", "none");
     });
 
     // AJAX request to check user log-in status on new project
-    
+
     $("#new-project-submit").on("click", ()=> {
         isUserLoggedIn();
         $("#secret-projectName").val($("#projectName").val());
@@ -44,9 +44,9 @@ function isUserLoggedIn() {
         method: "get",
         success: (res) => {
             if (res.user) {
-                
+
             }
-            serveSignup(res.user)
+            serveSignup(res.user);
         },
         failure: (err) => {
             console.log(err);
@@ -57,5 +57,5 @@ function isUserLoggedIn() {
 function serveSignup (bool) {
     if (!bool) {
         $("#project-signup-box").css("display", "flex");
-     } 
+     }
 }
