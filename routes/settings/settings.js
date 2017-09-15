@@ -43,9 +43,9 @@ router.post('/deleteuser/:userID', (req, res, next) => {
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-      return next(); 
+      return next();
     } else {
-      res.redirect('/')
+      res.redirect('/');
     }
 }
 
