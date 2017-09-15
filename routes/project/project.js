@@ -11,7 +11,6 @@ router.get('/new', (req, res, next) => {
 });
 
 router.post('/new', upload.any(), (req, res, next) => {
- //TODO:- Look if is login
 
   const newProject = new Project({
     projectName: req.body.projectName,
@@ -110,7 +109,6 @@ router.get('/:projectID', (req, res, next) => {
   let projectID = req.params.projectID;
   Project.findById(projectID).populate('userID', 'username _id').exec((err, project) => {
     if (err) {
-      console.log("OK");
       next(err);}
     res.render('project/project', {project});
   });
