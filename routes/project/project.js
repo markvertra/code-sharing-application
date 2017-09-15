@@ -4,7 +4,7 @@ const Project = require('../../models/project');
 const User = require('../../models/user');
 const multer = require('multer');
 const bcrypt = require("bcrypt");
-const upload = multer({ dest: './public/uploads/' })
+const upload = multer({ dest: './public/uploads/' });
 
 router.get('/new', (req, res, next) => {
   res.render('project/new');
@@ -21,7 +21,7 @@ router.post('/new', upload.any(), (req, res, next) => {
            fileJS: `/uploads/${req.user._id}/${req.body.projectName}/${req.files.filename}`,
          }
     });
-  
+
 
   newProject.save((err) => {
     if (err) {return next(err);}
@@ -36,7 +36,7 @@ router.post('/new', upload.any(), (req, res, next) => {
 });
 
 router.post("/signup",  upload.any(), (req, res, next) => {
-  
+
   console.log("FILES: " + req.files);
   const newUser = new User({
     username: req.body.username,
@@ -81,7 +81,7 @@ router.post("/signup",  upload.any(), (req, res, next) => {
           if (err) {
             next(err);
           }
-          
+
           const newProject = new Project({
             projectName: req.body.projectName,
             userID: newUserID,
@@ -97,10 +97,10 @@ router.post("/signup",  upload.any(), (req, res, next) => {
               User.findByIdAndUpdate(req.user._id,{
                 $push: {projectIDs: newProject._id} }, (err, user) => {
                 if (err) {return next(err);}
-          
+
                 res.redirect(req.headers.referer);
             });
-          })
+          });
         });
       }
   });

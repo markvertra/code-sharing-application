@@ -14,7 +14,7 @@ $(document).ready(function(){
     
     $(".login-btn").on("click", function(){
         $("#login-form").css("display", "block");
-    });    
+    });
 
     $(".signup-link").on("click", function(){
         $("#signup-box").css("display", "flex");
@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 
     // AJAX request to check user log-in status on new project
-    
+
     $("#new-project-submit").on("click", ()=> {
 
         isUserLoggedIn();
@@ -54,9 +54,9 @@ function isUserLoggedIn() {
         method: "get",
         success: (res) => {
             if (res.user) {
-                
+
             }
-            serveSignup(res.user)
+            serveSignup(res.user);
         },
         failure: (err) => {
             console.log(err);

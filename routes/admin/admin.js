@@ -7,31 +7,31 @@ const multer = require("multer");
 const upload = multer({ dest: './public/uploads/' });
 
 router.get('/', (req, res, next) => {
-    User.find({}, (err, users ) => {
-        if (err) { next(err);}
+  User.find({}, (err, users ) => {
+    if (err) { next(err);}
+
     Project.find({}, (err, projects) => {
-        if (err) { next(err);}
-    res.render('admin/admin', {users: users, projects: projects});
+    if (err) { next(err);}
+      res.render('admin/admin', {users: users, projects: projects});
     });
-    });
+  });
 });
 
 router.post('/createuser', (req, res, next) => {
-    const newUser = new User({
-        username: req.body.username,
-        password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)),
-        email: req.body.email,
-        role: "User"
-    });
+  const newUser = new User({
+    username: req.body.username,
+    password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)),
+    email: req.body.email,
+    role: "User"
+  });
 
-    newUser.save((err) => {
-        if (err) {return next(err);}
-        res.redirect('/admin');
-    });
+  newUser.save((err) => {
+    if (err) {return next(err);}
+    res.redirect('/admin');
+  });
 });
 
 router.post('/edituser/:userID', (req, res, next) => {
-
   const infoUser = {
     username: req.body.username,
     password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)),
@@ -40,9 +40,9 @@ router.post('/edituser/:userID', (req, res, next) => {
 
   User.findByIdAndUpdate(req.params.userID, infoUser, (err, users) => {
 
-    if (err) { return next(err); }
+    if (err) { next(err); }
     User.find({}, (err, users) => {
-      if (err) { return next(err); }
+      if (err) { next(err); }
 
       res.redirect('/admin');
   });
@@ -64,10 +64,13 @@ router.post('/deleteuser/:userID', (req, res, next) => {
         if (err) { return next(err);}
         User.find({}, (err, users) => {
 
-        if (err) { return next(err);}
-            res.redirect('/admin');
-      });
+    User.find({}, (err, users) => {
+    if (err) { next(err);}
+
+    res.redirect('/admin');
     });
+  });
+  });
 });
 
 router.post('/createproject', upload.any(), (req, res, next) => {
@@ -80,17 +83,17 @@ router.post('/createproject', upload.any(), (req, res, next) => {
            }
       });
 
-    newProject.save((err) => {
-        if (err) {return next(err);}
+  newProject.save((err) => {
+  if (err) {return next(err);}
 
-        User.findByIdAndUpdate(req.body.userID,{
-            $push: { projectIDs: newProject._id }}, (err, user) => {
-            if (err) { return next(err); }
-            console.log(user);
+  User.findByIdAndUpdate(req.body.userID,{
+  $push: { projectIDs: newProject._id }},
+  (err, user) => {
+    if (err) { next(err); }
 
-        res.redirect('/admin');
+    res.redirect('/admin');
     });
-    });
+  });
 });
 
 router.post('/editproject/:projectID', upload.any(), (req, res, next) => {
@@ -105,25 +108,25 @@ router.post('/editproject/:projectID', upload.any(), (req, res, next) => {
     };
 
   Project.findByIdAndUpdate(req.params.projectID, infoProject, (err, projects) => {
+    if (err) { next(err);}
 
-    if (err) { return next(err);}
     Project.find({}, (err, projects) => {
-      if (err) { return next(err);}
+      if (err) { next(err);}
 
       res.redirect('/admin');
-  });
+    });
   });
 });
 
 // TODO Remove deleted project from user
-
 router.post('/deleteproject/:projectID', (req, res, next) => {
     Project.findByIdAndRemove(req.params.projectID, (err, projects) => {
-        if (err) { return next(err);}
+        if (err) { next(err);}
+
         Project.find({}, (err, projects) => {
-            
-        if (err) { return next(err);}
-            res.redirect('/admin');
+          if (err) { next(err);}
+
+          res.redirect('/admin');
       });
     });
 });

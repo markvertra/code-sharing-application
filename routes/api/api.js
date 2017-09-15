@@ -6,7 +6,6 @@ router.get('/user', (req, res, next) => {
       res.json({ user: true});
     } else
       res.json({ user: false});
-    
 });
 
 module.exports = router;
