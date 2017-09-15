@@ -1,13 +1,18 @@
-Create New Project
+<button type="submit" id="get-code">Get Code</button>
+<div class="input-holder">
+  <div class="pen-input">
+      <h3>HTML</h3>
+      <textarea class="pen-box" id="pen-HTML" name="penHTML"></textarea>
+  </div>
+  <div class="pen-input">
+      <h3>CSS</h3>
+      <textarea class="pen-box" id="pen-CSS" name="penCSS"></textarea>
+  </div>
+  <div class="pen-input">
+      <h3>JS</h3>
+      <textarea class="pen-box" id="pen-JS" name="penJS"></textarea>
+  </div>
+</div>
 
-<form action="/project/new" method="post" enctype="multipart/form-data">
-    <label class="code-label" for="projectName">Project Name</label>
-    <input class="code-input" id="projectName" type="text" name="projectName">
-    <label class="code-label" for="fileHTML">HTML File</label>
-    <input class="code-input" id="project-HTML" type="file" name="fileHTML">
-    <label class="code-label" for="fileCSS">CSS File</label>
-    <input class="code-input" id="project-CSS" type="file" name="fileCSS">
-    <label class="code-label" for="fileCSS">JS File</label>
-    <input class="code-input" id="project-JS" type="file" name="fileJS">
-    <button class="code-btn" id="new-project-submit" type="submit">Submit</button>
-</form>
+<iframe id="results-frame" src="results.html"></iframe> 
+<div id="results-box"></div></form>

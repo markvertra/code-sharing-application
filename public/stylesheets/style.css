@@ -195,6 +195,34 @@ h6 {
   display: block;
 }
 
+.pen-input {
+  height: 450px;
+  width: 33%
+}
+
+.pen-box {
+  width: 100%;
+  height: 400px;
+}
+
+.input-holder {
+  display: flex;
+  justify-content: space-around;
+}
+
+#results-frame {
+  display: none;
+  border: 1px solid black;
+  height: 500px;
+  width: 100%;
+}
+
+#results-box {
+  border: 1px solid black;
+  height: 500px;
+  width: 100%;
+}
+
 /* SETTINGS STYLES */
 
 .settings-form {

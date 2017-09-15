@@ -2,22 +2,20 @@ const express = require('express');
 const router = express.Router();
 const Project = require('../../models/project');
 const User = require('../../models/user');
-const multer = require('multer');
 const bcrypt = require("bcrypt");
-const upload = multer({ dest: './public/uploads/' });
 
 router.get('/new', (req, res, next) => {
   res.render('project/new');
 });
 
-router.post('/new', upload.any(), (req, res, next) => {
+router.post('/new', (req, res, next) => {
 
   const newProject = new Project({
     projectName: req.body.projectName,
     userID: req.user._id,
-    file: {fileHTML: `/uploads/${req.user._id}/${req.body.projectName}/${req.files.filename}`,
-           fileCSS: `/uploads/${req.user._id}/${req.body.projectName}/${req.files.filename}`,
-           fileJS: `/uploads/${req.user._id}/${req.body.projectName}/${req.files.filename}`,
+    file: {fileHTML: req.body.penHTML,
+           fileCSS: req.body.penCSS,
+           fileJS: req.body.penJS,
          }
     });
 
@@ -34,9 +32,8 @@ router.post('/new', upload.any(), (req, res, next) => {
   });
 });
 
-router.post("/signup",  upload.any(), (req, res, next) => {
+router.post("/signup",  (req, res, next) => {
 
-  console.log("FILES: " + req.files);
   const newUser = new User({
     username: req.body.username,
     password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)),
@@ -84,10 +81,10 @@ router.post("/signup",  upload.any(), (req, res, next) => {
           const newProject = new Project({
             projectName: req.body.projectName,
             userID: newUserID,
-            file: {fileHTML: `/uploads/${newUserID}/${req.body.projectName}/${req.files.filename}`,
-                   fileCSS: `/uploads/${newUserID}/${req.body.projectName}/${req.files.filename}`,
-                   fileJS: `/uploads/${newUserID}/${req.body.projectName}/${req.files.filename}`,
-                 }
+            file: {fileHTML: req.body.penHTML,
+                  fileCSS: req.body.penCSS,
+                  fileJS: req.body.penJS,
+                }
             });
 
             newProject.save((err) => {

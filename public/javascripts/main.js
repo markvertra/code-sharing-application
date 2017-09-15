@@ -30,22 +30,18 @@ $(document).ready(function(){
     // AJAX request to check user log-in status on new project
 
     $("#new-project-submit").on("click", ()=> {
-
         isUserLoggedIn();
-        $("#secret-projectName").val($("#projectName").val());
-        const $projectHTML = $("#project-HTML");
-        const $projectCSS = $("#project-CSS");
-        const $projectJS = $("#project-JS");
-        $projectHTML.clone();
-        $projectCSS.clone();
-        $projectJS.clone();
+        $("#secret-projectName").val($("#project-name").val());
+        $("#secret-projectHTML").val($("#pen-HTML").val());
+        $("#secret-projectCSS").val($("#pen-CSS").val());
+        $("#secret-projectJS").val($("#pen-JS").val());
         $(".hidden-input").hide();
-        $projectHTML.appendTo($(".hidden-input"));
-        $projectCSS.appendTo($(".hidden-input"));
-        $projectJS.appendTo($(".hidden-input"));
     });
 
-
+    $("#get-code").on("click", function(){
+        getInfo();
+      });
+    
 });
 
 function isUserLoggedIn() {
@@ -70,3 +66,16 @@ function serveSignup (bool) {
         $("#main-overlay").css("display", "block");
      } 
 }
+
+function getInfo() {
+    console.log("HOLA");
+    $("#results-div").remove();
+    $("#results-box").append("<div id='results-div'></h1>")
+    const penHTML = $("#pen-HTML").val();
+    const penCSS = $("#pen-CSS").val();
+    const penJS = $("#pen-JS").val();
+    console.log("<style>" + penCSS + "</style>")
+    $("#results-div").append("<style>" + penCSS + "</style>")
+    $("#results-div").append(penHTML);
+    $("#results-div").append("<script>" + penJS + "</script>")
+  }
