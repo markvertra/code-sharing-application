@@ -7,9 +7,8 @@ router.get('/new', (req, res, next) => {
   res.render('project/new');
 });
 
+//TODO:- Look if is login
 router.post('/new', (req, res, next) => {
- //TODO:- Look if is login
-
   const newProject = new Project({
     projectName: req.body.projectName,
     userID: req.user._id,
@@ -23,20 +22,18 @@ router.post('/new', (req, res, next) => {
     if (err) {return next(err);}
 
     User.findByIdAndUpdate(req.user._id,{
-        $push: {projectIDs: req.user._id} }, (err, user) => {
+        $push: {projectIDs: newProject._id} }, (err, user) => {
         if (err) {return next(err);}
-        console.log(user);
         res.redirect(req.headers.referer);
-      });
+    });
   });
 });
 
 router.get('/:projectID', (req, res, next) => {
   let projectID = req.params.projectID;
   Project.findById(projectID).populate('userID', 'username _id').exec((err, project) => {
-    if (err) {
-      console.log("OK");
-      next(err);}
+    if (err) {next(err);}
+
     res.render('project/project', {project});
   });
 });
