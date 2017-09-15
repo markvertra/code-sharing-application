@@ -4,20 +4,15 @@ const Project = require('../../models/project');
 const User = require('../../models/user');
 const multer = require('multer');
 const bcrypt = require("bcrypt");
-const upload = multer({ dest: './public/uploads/' })
+const upload = multer({ dest: './public/uploads/' });
 
 router.get('/new', (req, res, next) => {
   res.render('project/new');
 });
 
-<<<<<<< HEAD
 router.post('/new', upload.any(), (req, res, next) => {
  //TODO:- Look if is login
 
-=======
-//TODO:- Look if is login
-router.post('/new', (req, res, next) => {
->>>>>>> db4716716685e4119779cc8a917bc0ba41f979a1
   const newProject = new Project({
     projectName: req.body.projectName,
     userID: req.user._id,
@@ -26,13 +21,12 @@ router.post('/new', (req, res, next) => {
            fileJS: `/uploads/${req.user._id}/${req.body.projectName}/${req.files.filename}`,
          }
     });
-  
+
 
   newProject.save((err) => {
     if (err) {return next(err);}
 
     User.findByIdAndUpdate(req.user._id,{
-<<<<<<< HEAD
       $push: {projectIDs: newProject._id} }, (err, user) => {
       if (err) {return next(err);}
 
@@ -42,7 +36,7 @@ router.post('/new', (req, res, next) => {
 });
 
 router.post("/signup",  upload.any(), (req, res, next) => {
-  
+
   console.log("FILES: " + req.files);
   const newUser = new User({
     username: req.body.username,
@@ -87,7 +81,7 @@ router.post("/signup",  upload.any(), (req, res, next) => {
           if (err) {
             next(err);
           }
-          
+
           const newProject = new Project({
             projectName: req.body.projectName,
             userID: newUserID,
@@ -103,26 +97,21 @@ router.post("/signup",  upload.any(), (req, res, next) => {
               User.findByIdAndUpdate(req.user._id,{
                 $push: {projectIDs: newProject._id} }, (err, user) => {
                 if (err) {return next(err);}
-          
+
                 res.redirect(req.headers.referer);
             });
-          })
+          });
         });
       }
-=======
-        $push: {projectIDs: newProject._id} }, (err, user) => {
-        if (err) {return next(err);}
-        res.redirect(req.headers.referer);
-    });
->>>>>>> db4716716685e4119779cc8a917bc0ba41f979a1
   });
 });
 
 router.get('/:projectID', (req, res, next) => {
   let projectID = req.params.projectID;
   Project.findById(projectID).populate('userID', 'username _id').exec((err, project) => {
-    if (err) {next(err);}
-
+    if (err) {
+      console.log("OK");
+      next(err);}
     res.render('project/project', {project});
   });
 });
