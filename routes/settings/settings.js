@@ -33,6 +33,16 @@ router.post('/edituser/:userID', (req, res, next) => {
 
 // TODO sign out of session
 router.post('/deleteuser/:userID', (req, res, next) => {
+
+  Project.find({userID: req.params.userID}, (err, projects) => {
+    if (err) { next(err) }
+    projects.map((project) => {
+        project.remove((err) => {
+            if (err) {next(err);}
+        });
+    });
+  });
+
   User.findByIdAndRemove(req.params.userID, (err, users) => {
       if (err) { return next(err);}
 
