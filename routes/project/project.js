@@ -4,25 +4,23 @@ const Project = require('../../models/project');
 const User = require('../../models/user');
 const bcrypt = require("bcrypt");
 
-router.get('/view/:projectID', (req, res, next) => {
-  res.render('project/project');
+
+
+router.post('/save/:projectID', (req, res, next) => {
+  console.log(req.params.projectID)
 });
 
-router.post('/save', (req, res, next) => {
+router.post('/publish/:projectID', (req, res, next) => {
+  console.log(req.params.projectID)
 
-});
-
-router.post('/publish', (req, res, next) => {
-
-  // const updateProject = new Project({
-  //   projectName: req.body.projectName,
-  //   userID: req.user._id,
-  //   isPublic: true,
-  //   file: {fileHTML: req.body.penHTML,
-  //          fileCSS: req.body.penCSS,
-  //          fileJS: req.body.penJS,
-  //        }
-  //   });
+  const updateProject = {
+    projectName: req.body.projectName,
+    isPublic: true,
+    file: {fileHTML: req.body.penHTML,
+          fileCSS: req.body.penCSS,
+           fileJS: req.body.penJS,
+          }
+   };
     
   // updateProject.save((err) => {
   //   if (err) {return next(err);}
@@ -38,9 +36,9 @@ router.post('/publish', (req, res, next) => {
 });
 
 router.post('/new', (req, res, next) => {
-  console.log("HELLO" + req.user._id);
+
   const newProject = new Project({
-    projectName: "",
+    projectName: "My Random Project",
     userID: req.user._id,
     isPublic: false,
     file: {fileHTML: "",
@@ -49,21 +47,22 @@ router.post('/new', (req, res, next) => {
          }
     });
 
-    console.log("HELLO" + req.newProject._id);
   
     newProject.save((err) => {
       if (err) {return next(err);}
 
-    res.redirect("/view" + newProject._id);
-
-  // let projectID = req.params.projectID;
-  // Project.findById(projectID).populate('userID', 'username _id').exec((err, project) => {
-  //   if (err) {
-  //     next(err);}
-  //   res.render('project/project', {project});
+      res.redirect("/project/" + newProject._id);
 
   });
 });
 
+router.get('/:projectID', (req, res, next) => {
+
+  Project.findById((req.params.projectID), (err, project) => {
+    console.log("PROJECT" + project._id);
+    if (err) {next(err);}
+    res.render('project/project', { project: project });
+  });
+});
 
 module.exports = router;

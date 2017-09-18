@@ -1,20 +1,7 @@
+<form action="/project/save/<%= project._id %>" method="post">
+  <button>Save</button> 
+</form>
 
-<div>
-
-  <ul class="project-info">
-    <li>Project Name: <%= project.projectName %></li>
-    <li>Project ID: <%= project._id </li>
-    <li>User: <a href="/profile/<%=project.userID._id%>"><%= project.userID.username %></a></li>
-    <li>HTML File</li>
-    <li>CSS File</li>
-    <li>JS FILE</li>
-  </ul>
-  <form action="/save" method="post">
-      <button type="submit">Save</button>
-  </form>
-  <form action="/publish" method="post">
-    <button type="submit">Publish</button>
-  </form>
-<iframe class="results-frame">
-
-</iframe>
+<form action="/project/publish/<%= project._id %>" method="post">
+  <button>Publish</button>
+</form>
