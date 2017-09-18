@@ -1,28 +1,38 @@
 $(document).ready(function(){
 
-  const frame = $("iframe");
-  const contents = frame.contents();
-  const body = contents.find('body');
-  const styling = contents
-                  .find('head')
-                  .append('<style></style>')
-                  .children('style');
+  pageRenderer($("#writeHTML").attr("id"));
+  pageRenderer($("#writeCSS").attr("id"));
+  pageRenderer($("#writeJS").attr("id"));
 
-  $("input").keyup(function() {
+  $("textarea").keyup(function() {
+    let objectId = $(this).attr("id");
+    pageRenderer(objectId);
+   });
+
+});
+
+function pageRenderer (objectId) {
+
+    const frame = $("iframe");
+    const contents = frame.contents();
+    const body = contents.find('body');
+    const styling = contents
+                    .find('head')
+                    .append('<style></style>')
+                    .children('style');
 
     let bodyText = ""; 
-
-    if ($(this).attr("id") === "writeHTML" || $(this).attr("id") === "writeJS") {
+    console.log(objectId)
+    if (objectId === "writeHTML" || objectId === "writeJS") {
         bodyText = $("#writeHTML").val() + ("<script>" + $("#writeJS").val() + "</script>")
         body.html(bodyText);
         $("#hiddenHTML").val($("#writeHTML").val());
         $("#hiddenJS").val($("#writeJS").val());
-    } else if ($(this).attr("id") === "writeCSS") {
-        styling.html($(this).val());
-        $("#hiddenCSS").val($(this).val());
-    } else if ($(this).attr("id") === "projectName") {
+    } else if (objectId === "writeCSS") {
+        styling.html($("#writeCSS").val());
+        $("#hiddenCSS").val($("#writeCSS").val());
+    } else if (objectId === "projectName") {
         $("#hiddenProjectName").val($(this).val());
     }
-  });
 
-});
+}

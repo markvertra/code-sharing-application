@@ -1,12 +1,12 @@
 <form action="/project/save/<%= project._id %>" method="post">
   <label for="projectName">Project Name</label>
-  <input name="projectName" id="projectName" type="text" value="<%= project.projectName %>">
+  <textarea name="projectName" id="projectName" type="text"><%= project.projectName %></textarea>
   <label for="writeHTML">HTML</label>
-  <input name="writeHTML" id="writeHTML" value="<%= project.file.fileHTML %>">
+  <textarea  name="writeHTML" id="writeHTML"><%= project.file.fileHTML %></textarea>
   <label for="writeCSS">CSS</label>
-  <input name="writeCSS" id="writeCSS" value="<%= project.file.fileCSS %>">
+  <textarea name="writeCSS" id="writeCSS"><%= project.file.fileCSS %></textarea>
   <label for="writeJS">JS</label>
-  <input name="writeJS" id="writeJS" value="<%= project.file.fileJS %>"></input>
+  <textarea name="writeJS" id="writeJS"><%= project.file.fileJS %></textarea>
   <button type="submit" id="save-project-btn">Save</button> 
 </form>
 
