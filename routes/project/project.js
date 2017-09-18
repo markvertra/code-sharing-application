@@ -56,14 +56,17 @@ router.post('/new', (req, res, next) => {
     newProject.save((err) => {
       if (err) {return next(err);}
 
-      res.redirect("/project/" + newProject._id);
+      User.findByIdAndUpdate(req.user._id,{
+        $push: {projectIDs: newProject._id} }, (err, user) => {
+        if (err) { next(err);}
 
+        res.redirect("/project/" + newProject._id);
+    });
   });
 });
 
 
 router.get('/:projectID', (req, res, next) => {
-
   Project.findById((req.params.projectID), (err, project) => {
     if (err) {next(err);}
     res.render('project/project', { project: project });
