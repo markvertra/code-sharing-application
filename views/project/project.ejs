@@ -2,14 +2,25 @@
   <label for="projectName">Project Name</label>
   <input name="projectName" type="text" value="<%= project.projectName %>">
   <label for="penHTML">HTML</label>
-  <input name="penHTML" value="<%= project.file.fileHTML %>">
+  <input name="penHTML" id="writeHTML" value="<%= project.file.fileHTML %>">
   <label for="penCSS">CSS</label>
-  <input name="penCSS" value="<%= project.file.fileCSS %>">
+  <input name="penCSS" id="writeCSS" value="<%= project.file.fileCSS %>">
   <label for="penJS">JS</label>
-  <input name="penJS" value="<%= project.file.fileJS %>"></input>
+  <input name="penJS" id="writeJS" value="<%= project.file.fileJS %>"></input>
   <button type="submit" id="save-project-btn">Save</button> 
 </form>
 
 <form action="/project/publish/<%= project._id %>" method="post">
   <button type="submit" id="publish-project-btn">Publish</button>
 </form>
+<div class="display-container">
+  <iframe id="results-frame"></iframe>
+</div>
+
+<script
+src="https://code.jquery.com/jquery-3.2.1.min.js"
+integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous"></script>
+
+<script src="/javascripts/renderer.js"></script>
+

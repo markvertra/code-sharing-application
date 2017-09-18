@@ -1,12 +1,13 @@
 <div class="projects-display">
-  <div class="project-box create-project-box">
-      <div class="project-image">
-      
-      </div>
-      <div class="project-info">
-        <a href="/project/new">Create Project</a>
-      </div>
-  </div>
+  <% if (userSignedIn) { %>
+    <div class="project-box create-project-box">
+        <div class="project-image">
+        </div>
+        <div class="project-info">
+          <a href="/project/new">Create Project</a>
+        </div>
+    </div>
+  <% } %>
   <% projects.forEach((project) => { %>
     <% if (project.isPublic) { %>
     <div class="project-box">

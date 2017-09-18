@@ -57,6 +57,10 @@ router.post('/new', (req, res, next) => {
   });
 });
 
+router.get('/api/:projectID', (req, res, next) => {
+  res.send("<html><head><style>" + "</style></head><body>" + `<script src="https://code.jquery.com/jquery-3.2.1.min.js"</script><script type="text/javascript>` + "</script></body></html>")
+});
+
 router.get('/:projectID', (req, res, next) => {
 
   Project.findById((req.params.projectID), (err, project) => {

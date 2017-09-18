@@ -211,17 +211,11 @@ h6 {
 }
 
 #results-frame {
-  display: none;
   border: 1px solid black;
   height: 500px;
   width: 100%;
 }
 
-#results-box {
-  border: 1px solid black;
-  height: 500px;
-  width: 100%;
-}
 
 /* SETTINGS STYLES */
 
