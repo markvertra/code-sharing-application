@@ -31,7 +31,9 @@
         </li>
         <li>
             <% if (userSignedIn) { %>
-            <a href="/project/new">Create Project</a>
+            <form action="/project/new" method="post">
+                <button type="submit">Create Project</button>
+            </form>
             <% } %>
         </li>
         <% if (!userSignedIn) { %>
