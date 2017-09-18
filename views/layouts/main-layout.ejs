@@ -27,10 +27,12 @@
         <li>
             <% if (userSignedIn) { %>
             <a href="/profile/myprofile">My Profile</a>
-            <% } %>
+            
         </li>
         <li>
+            <% if (userSignedIn) { %>
             <a href="/project/new">Create Project</a>
+            <% } %>
         </li>
         <% if (!userSignedIn) { %>
             <li class="log-btn login-btn">
