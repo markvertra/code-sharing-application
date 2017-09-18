@@ -8,6 +8,7 @@
       </div>
   </div>
   <% projects.forEach((project) => { %>
+    <% if (project.isPublic) { %>
     <div class="project-box">
         <div class="project-image">
         </div>
@@ -16,5 +17,6 @@
           <p>User: <a href="/profile/<%=project.userID._id%>"><%= project.userID.username %></a></p>
         </div>
     </div>
+    <% } %>
   <% }) %>
 </div>
