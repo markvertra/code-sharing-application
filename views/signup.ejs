@@ -1,15 +1,13 @@
-<div id="signup-box">
+<div id="signup-box" class="login-container">
     <form action="/signup" method="POST" class="signup-form">
         <div>
             <label class="code-label" for="username">Username:</label>
             <input class="code-input" type="text" name="username">
-        </div>
-        <div>
             <label class="code-label" for="password">Password:</label>
             <input class="code-input" type="password" name="password">
         </div>
         <div>
-            <input type="submit" id="main-signup" value="Sign Up">
+            <input type="submit" id="signup-btn" value="Sign Up" class="log-btn">
         </div>
         <% if (typeof message != "undefined") { %>
             <div class="error-message"><%= message %></div>

@@ -1,7 +1,9 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   box-sizing: border-box;
+  font-family: 'Droid-serif', serif;
 }
+
 
 a {
   color: #00B7FF;
@@ -43,30 +45,49 @@ h6 {
   margin-bottom: 5px;
 }
 
-#main-overlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  background-color: rgba(0,0,0,0.6);
+input:focus {
+  outline: none;
+}
+
+.error-message {
+  margin-bottom: 10px;
+  color: lightcoral;
 }
 
 /* GENERAL CLASSES */
 
 /* Navbar Link Button */ 
 .navbar-btn {
-  border-radius: 15px;
-  padding: 10px;
-  border: 2px solid white; 
+  padding: 32px;
+  border-top: 3px solid white; 
   font-size: 1.2em;
   text-decoration: none;
+  opacity: 0.8;
   color: white;
   box-shadow: 1px 1px 1px 0.5;
+  transition: opacity 1s, font-size 3s;
+}
+
+.navbar-btn:hover {
+  opacity: 1;
+  font-size: 1.25em;
+}
+
+/* Standard Button */
+.log-btn {
+  color: white;
+  border-radius: 15px;
+  padding: 5px;
+  font-size: 0.9em;
+  border: 2px solid white;
+  text-decoration: none;
+  box-shadow: 1px 1px 1px 0.5;
+  background-color: rgba(0,0,0,0);
+  margin: 0px 10px;
+}
+
+.log-btn:hover {
+  background-color: rgba(255, 255, 200, 0.1);
 }
 
 /* Delete Button */ 
@@ -91,10 +112,9 @@ h6 {
   display: flex;
   position: relative;
   justify-content: space-between;
-  height: 50px;
+  height: 90px;
   background-color: black;
-  padding: 20px;
-  line-height: 50px;
+  line-height: 90px;
 }
 
 
@@ -103,66 +123,35 @@ h6 {
 
 }
 
-#project-signup-box {
-  display: none;
-}
-
-#signup-box, #project-signup-box {
-  background-color: white;
-  position: absolute;
-  width: 250px;
-  height: 200px;
-  top: 40%;
-  left: 40%;
-  padding: 20px;
-  border: 1px solid black;
-  flex-direction: column;
-  justify-content: space-between;
-  align-content: space-between;
-  z-index: 2;
-}
-
-#project-signup-box {
-  display: none;
-}
-
-#signup-box input {
-  margin: 10px 0px;
-}
-
-#login-form {
-  background-color: lightcyan;
-  position: absolute;
-  top: 90px;
-  right:0%;
-  padding: 10px;
-}
-
-.close-signup {
-  border: 1px solid black;
-  width: 10px;
-}
-
-.log-btn {
-  float:right;
-  margin: 0px 20px;
-}
-
-.log-btn a:link{
-  text-decoration: none;
-}
-
-.log-btn:hover{
-  opacity: 0.5;
-}
-
 #create-project-form{
   display: inline;
 }
 
 #create-project-btn{
-
+  border: none;
   background-color: rgba(0,0,0,0);
+  border-top: 3px solid white;
+}
+
+/* LOGIN/SIGNUP STYLES */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  color: white;
+  background-color: black;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 450px;
+}
+
+#signup-box {
+  text-align: center;
+}
+
+#signup-btn {
+  margin: 10px;
 }
 
 /* HOME STYLES */
@@ -177,6 +166,13 @@ h6 {
   border: 1px solid black;
   width: 300px;
   margin: 50px;
+  transition: box-shadow 1.5s;
+}
+
+.project-box:hover {
+  opacity: 0.8;
+  border-radius: 5px;
+  box-shadow: 3px 3px 1px 1px;
 }
 
 .project-image {
@@ -190,6 +186,9 @@ h6 {
   justify-content: space-between;
   font-size: 0.8em;
   padding: 2px 5px;
+  color: white;
+  text-decoration: none;
+  background-color: black;
 }
 
 /* PROJECT STYLES */

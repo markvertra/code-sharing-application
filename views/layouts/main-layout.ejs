@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/reset.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Code Sharing Application</title>
@@ -37,43 +38,17 @@
             <% } %>
         </li>
         <% if (!userSignedIn) { %>
-            <li class="log-btn login-btn">
+            <li class="login-btn">
                 <a href="/login" class="navbar-btn">Log In</a>
             </li>
         <% } else { %>
-            <li class="log-btn logout-btn">
+            <li class="logout-btn">
                 <a href="/logout" class="navbar-btn">Log-out</a>
             </li>
         <% } %>
     </ul>
     </div>
 </div>
-<div id="project-signup-box">
-        <form action="/project/signup" method="POST" class="signup-form" enctype="multipart/form-data">
-            <div>
-                <label class="code-label" for="username">Username:</label>
-                <input class="code-input" type="text" name="username">
-            </div>
-            <div>
-                <label class="code-label" for="password">Password:</label>
-                <input class="code-input" type="password" name="password">
-            </div>
-            <div>
-                <label class="code-label" for "email">Email Address</label>
-                <input class="code-input" type="email" name="email">
-            </div>
-            <div>
-            <div class="hidden-input">
-                <input id="secret-projectName" name="projectName" type="text">
-                <input id="secret-projectHTML" name="projectHTML" type="text">
-                <input id="secret-projectCSS" name="projectCSS" type="text">
-                <input id="secret-projectJS" name="projectJS" type="text">
-            </div>
-                <input type="submit" value="Sign Up" id="project-signup">
-            </div>
-        </form>
-        
-    </div>
     
 <div class="main-content">
 <%- body -%>
