@@ -22,7 +22,6 @@ function pageRenderer (objectId) {
                     .children('style');
 
     let bodyText = ""; 
-    console.log(objectId)
     if (objectId === "writeHTML" || objectId === "writeJS") {
         bodyText = $("#writeHTML").val() + ("<script>" + $("#writeJS").val() + "</script>")
         body.html(bodyText);
@@ -35,6 +34,11 @@ function pageRenderer (objectId) {
         $("#hiddenProjectName").val($(this).val());
     }
 
+}
+
+function iframeReplacer (iframe) {
+    iframe.remove()
+    iframe.appendTo($(".display-container"))
 }
 
 function thumbnailRenderer (projectId, htmlFile, cssFile, jsFile) {
