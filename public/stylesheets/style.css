@@ -166,14 +166,14 @@ h6 {
 
 .project-box {
   border: 1px solid black;
-  width: 250px;
+  width: 300px;
   margin: 50px;
 }
 
 .project-image {
   border-bottom: 1px solid black;
   height: 150px;
-  width: 250px;
+  width: 300px;
 }
 
 .project-info {
