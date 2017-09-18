@@ -1,16 +1,20 @@
 <form action="/project/save/<%= project._id %>" method="post">
   <label for="projectName">Project Name</label>
-  <input name="projectName" type="text" value="<%= project.projectName %>">
-  <label for="penHTML">HTML</label>
-  <input name="penHTML" id="writeHTML" value="<%= project.file.fileHTML %>">
-  <label for="penCSS">CSS</label>
-  <input name="penCSS" id="writeCSS" value="<%= project.file.fileCSS %>">
-  <label for="penJS">JS</label>
-  <input name="penJS" id="writeJS" value="<%= project.file.fileJS %>"></input>
+  <input name="projectName" id="projectName" type="text" value="<%= project.projectName %>">
+  <label for="writeHTML">HTML</label>
+  <input name="writeHTML" id="writeHTML" value="<%= project.file.fileHTML %>">
+  <label for="writeCSS">CSS</label>
+  <input name="writeCSS" id="writeCSS" value="<%= project.file.fileCSS %>">
+  <label for="writeJS">JS</label>
+  <input name="writeJS" id="writeJS" value="<%= project.file.fileJS %>"></input>
   <button type="submit" id="save-project-btn">Save</button> 
 </form>
 
 <form action="/project/publish/<%= project._id %>" method="post">
+  <input name="hiddenProjectName" id="hiddenProjectName" class="hidden" type="text" value="<%= project.projectName %>">
+  <input name="hiddenHTML" id="hiddenHTML" type="text" class="hidden" value="<%= project.file.fileHTML %>">
+  <input name="hiddenCSS" id="hiddenCSS" type="text" class="hidden" value="<%= project.file.fileCSS %>">
+  <input name="hiddenJS" id="hiddenJS" type="text" class="hidden" value="<%= project.file.fileJS %>">
   <button type="submit" id="publish-project-btn">Publish</button>
 </form>
 <div class="display-container">

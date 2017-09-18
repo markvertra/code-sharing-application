@@ -216,6 +216,10 @@ h6 {
   width: 100%;
 }
 
+.hidden {
+  display: none;
+}
+
 
 /* SETTINGS STYLES */
 

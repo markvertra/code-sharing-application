@@ -15,10 +15,13 @@ $(document).ready(function(){
     if ($(this).attr("id") === "writeHTML" || $(this).attr("id") === "writeJS") {
         bodyText = $("#writeHTML").val() + ("<script>" + $("#writeJS").val() + "</script>")
         body.html(bodyText);
+        $("#hiddenHTML").val($("#writeHTML").val());
+        $("#hiddenJS").val($("#writeJS").val());
     } else if ($(this).attr("id") === "writeCSS") {
         styling.html($(this).val());
-    } else if ($(this).attr("id") === "writeJS") {
-        // body.append("<script>" + $(this).val() + "</script>");
+        $("#hiddenCSS").val($(this).val());
+    } else if ($(this).attr("id") === "projectName") {
+        $("#hiddenProjectName").val($(this).val());
     }
   });
 

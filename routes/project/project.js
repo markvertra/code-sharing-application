@@ -10,9 +10,9 @@ router.post('/save/:projectID', (req, res, next) => {
   
   const updateProject = {
     projectName: req.body.projectName,
-    file: {fileHTML: req.body.penHTML,
-          fileCSS: req.body.penCSS,
-           fileJS: req.body.penJS,
+    file: {fileHTML: req.body.writeHTML,
+           fileCSS: req.body.writeCSS,
+           fileJS: req.body.writeJS,
           }
    };
 
@@ -28,6 +28,10 @@ router.post('/publish/:projectID', (req, res, next) => {
 
   const updateProject = {
     isPublic: true,
+    file: {fileHTML: req.body.hiddenHTML,
+            fileCSS: req.body.hiddenCSS,
+             fileJS: req.body.hiddenJS,
+      }
    };
 
   Project.findByIdAndUpdate(req.params.projectID, updateProject, (err, project) => {
@@ -57,14 +61,10 @@ router.post('/new', (req, res, next) => {
   });
 });
 
-router.get('/api/:projectID', (req, res, next) => {
-  res.send("<html><head><style>" + "</style></head><body>" + `<script src="https://code.jquery.com/jquery-3.2.1.min.js"</script><script type="text/javascript>` + "</script></body></html>")
-});
 
 router.get('/:projectID', (req, res, next) => {
 
   Project.findById((req.params.projectID), (err, project) => {
-    console.log("PROJECT" + project._id);
     if (err) {next(err);}
     res.render('project/project', { project: project });
   });
