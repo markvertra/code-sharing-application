@@ -28,6 +28,7 @@ const profile = require('./routes/profile/profile');
 const home = require('./routes/home/home');
 const project = require('./routes/project/project');
 const api = require('./routes/api/api');
+const logRoute = require('./routes/log/log');
 
 const app = express();
 
@@ -78,6 +79,7 @@ app.use('/profile', profile);
 app.use('/home', home);
 app.use('/settings', settings);
 app.use('/project', project);
+app.use('/', logRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

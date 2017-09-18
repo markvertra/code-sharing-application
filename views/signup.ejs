@@ -9,11 +9,10 @@
             <input class="code-input" type="password" name="password">
         </div>
         <div>
-            <label class="code-label" for "email">Email Address</label>
-            <input class="code-input" type="email" name="email">
-        </div>
-        <div>
             <input type="submit" id="main-signup" value="Sign Up">
         </div>
+        <% if (typeof message != "undefined") { %>
+            <div class="error-message"><%= message %></div>
+        <% } %>
     </form>
 </div>
