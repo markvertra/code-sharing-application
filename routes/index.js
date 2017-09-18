@@ -13,9 +13,13 @@ router.get('/', (req, res, next) => {
   res.redirect('/home');
 });
 
+router.get('/login', (req, res, next) => {
+  res.render('login', {"message": req.flash("error")});
+});
+
 router.post('/login', passport.authenticate("local-login", {
   successRedirect: "/",
-  failureRedirect: "/",
+  failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
 }));
@@ -23,6 +27,10 @@ router.post('/login', passport.authenticate("local-login", {
 router.get('/logout', (req, res, next) => {
   req.logout();
   res.redirect(req.headers.referer);
+});
+
+router.get('/signup', (req, res, next) => {
+  res.render('signup', {"message": req.flash("error")});
 });
 
 router.post('/signup', (req, res, next) => {

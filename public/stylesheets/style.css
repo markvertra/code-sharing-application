@@ -98,7 +98,7 @@ h6 {
 
 }
 
-#signup-box, #login-form, #project-signup-box {
+#project-signup-box {
   display: none;
 }
 

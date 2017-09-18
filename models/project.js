@@ -6,6 +6,7 @@ mongoose.Promise = require('bluebird');
 const projectSchema = new Schema ({
 	projectName: {type: String},
 	userID: {type: Schema.Types.ObjectId, ref: 'User'},
+	isPublic: {type: Boolean},
 	file: {
 		fileHTML: {type: String},
 		fileCSS: {type: String},
