@@ -1,3 +1,8 @@
+<script
+src="https://code.jquery.com/jquery-3.2.1.min.js"
+integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous"></script>
+
 <div class="projects-display">
   <% if (userSignedIn) { %>
     <div class="project-box create-project-box">
@@ -12,6 +17,21 @@
     <% if (project.isPublic) { %>
     <div class="project-box">
         <div class="project-image">
+          <iframe id="<%= project._id %>"></iframe>
+          
+          <script>
+                var thumbnailRenderer = function (projectId, htmlFile, cssFile, jsFile) {
+
+                    const frame = document.getElementById(projectId);
+                    const contents = frame.contentWindow.document;
+                    const body = contents.body
+                    const styling = contents.head
+
+                    const bodyText = htmlFile;
+                    styling.innerHTML = "<style>" + cssFile + "</style>";
+                  };
+                thumbnailRenderer("<%= project._id %>", "<%= project.file.fileHTML %>", "<%= project.file.fileCSS %>", "<%= project.file.fileJS %>")
+          </script>
         </div>
         <div class="project-info">
           <p>Project: <a class="project-link" href="/project/<%=project._id%>"><%= project.projectName %></a></p>
@@ -21,3 +41,5 @@
     <% } %>
   <% }) %>
 </div>
+
+

@@ -71,6 +71,23 @@ app.use((req, res, next) => {
   next();
 });
 
+app.locals.thumbnailRenderer = function (projectId, htmlFile, cssFile, jsFile) {
+  console.log(projectId + htmlFile + cssFile + jsFile);
+
+  const frame = $("'#" + projectId + "'");
+  const contents = frame.contents();
+  const body = contents.find('body');
+  const styling = contents
+                  .find('head')
+                  .append('<style></style>')
+                  .children('style');
+
+  const bodyText = htmlFile + "<script>" + jsFile + "</script>"
+  body.html(bodyText);
+  styling.html(cssFile);
+};
+
+
 //setup routes
 app.use('/', index);
 app.use('/api', api);

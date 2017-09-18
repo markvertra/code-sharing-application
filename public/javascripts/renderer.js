@@ -36,3 +36,21 @@ function pageRenderer (objectId) {
     }
 
 }
+
+function thumbnailRenderer (projectId, htmlFile, cssFile, jsFile) {
+        console.log(projectId + htmlFile + cssFile + jsFile);
+
+        const frame = $("'#" + projectId + "'");
+        const contents = frame.contents();
+        const body = contents.find('body');
+        const styling = contents
+                        .find('head')
+                        .append('<style></style>')
+                        .children('style');
+
+        const bodyText = htmlFile + "<script>" + jsFile + "</script>"
+        body.html(bodyText);
+        styling.html(cssFile);
+
+}
+
