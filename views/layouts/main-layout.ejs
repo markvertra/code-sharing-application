@@ -13,36 +13,36 @@
 </div>
 <div class="navbar">
     <div class="home-box">
-        <a href="/">Home</a>
+        <a href="/" class="navbar-btn">Home</a>
     </div>
     <ul class="navbar-list">
         <li>
-            <a href="/admin">Admin Panel</a>
+            <a href="/admin" class="navbar-btn">Admin Panel</a>
         </li>
         <li>
             <% if (userSignedIn) { %>
-                <a href="/settings">User Settings</a>
+                <a href="/settings" class="navbar-btn">User Settings</a>
             <% } %>
         </li>
         <li>
             <% if (userSignedIn) { %>
-            <a href="/profile/myprofile">My Profile</a>
+            <a href="/profile/myprofile" class="navbar-btn">My Profile</a>
             <% } %>
         </li>
         <li>
             <% if (userSignedIn) { %>
-            <form action="/project/new" method="post">
-                <button type="submit">Create Project</button>
+            <form action="/project/new" method="post" id="create-project-form">
+                <button type="submit" id="create-project-btn" class="navbar-btn">Create Project</button>
             </form>
             <% } %>
         </li>
         <% if (!userSignedIn) { %>
             <li class="log-btn login-btn">
-                <a href="/login">Log In</a>
+                <a href="/login" class="navbar-btn">Log In</a>
             </li>
         <% } else { %>
             <li class="log-btn logout-btn">
-                <a href="/logout">Log-out</a>
+                <a href="/logout" class="navbar-btn">Log-out</a>
             </li>
         <% } %>
     </ul>

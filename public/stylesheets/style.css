@@ -11,7 +11,6 @@ a {
   margin: auto;
   width: 90%;
   padding: 40px 20px;
-  min-height: 800px;
 }
 
 h1 {
@@ -59,9 +58,15 @@ h6 {
 
 /* GENERAL CLASSES */
 
-/* Standard Button */ 
-.code-btn {
-  border-radius: 2px;
+/* Navbar Link Button */ 
+.navbar-btn {
+  border-radius: 15px;
+  padding: 10px;
+  border: 2px solid white; 
+  font-size: 1.2em;
+  text-decoration: none;
+  color: white;
+  box-shadow: 1px 1px 1px 0.5;
 }
 
 /* Delete Button */ 
@@ -87,7 +92,7 @@ h6 {
   position: relative;
   justify-content: space-between;
   height: 50px;
-  background-color: lightcyan;
+  background-color: black;
   padding: 20px;
   line-height: 50px;
 }
@@ -139,9 +144,6 @@ h6 {
 }
 
 .log-btn {
-  border: 1px solid black;
-  height: 50px;
-  padding: 0px 10px;
   float:right;
   margin: 0px 20px;
 }
@@ -154,7 +156,14 @@ h6 {
   opacity: 0.5;
 }
 
+#create-project-form{
+  display: inline;
+}
 
+#create-project-btn{
+
+  background-color: rgba(0,0,0,0);
+}
 
 /* HOME STYLES */
 
@@ -254,6 +263,6 @@ h6 {
 /* FOOTER STYLES */
 
 .footer {
-  background-color: lightcyan;
+  background-color: black;
   height: 100px;
 }
