@@ -7,32 +7,33 @@ const bcrypt = require("bcrypt");
 
 
 router.post('/save/:projectID', (req, res, next) => {
-  console.log(req.params.projectID)
-});
-
-router.post('/publish/:projectID', (req, res, next) => {
-  console.log(req.params.projectID)
-
+  
   const updateProject = {
     projectName: req.body.projectName,
-    isPublic: true,
     file: {fileHTML: req.body.penHTML,
           fileCSS: req.body.penCSS,
            fileJS: req.body.penJS,
           }
    };
-    
-  // updateProject.save((err) => {
-  //   if (err) {return next(err);}
 
-  //   // NO LONGER NEEDED AS GENERATED ON SIGN-IN
+  Project.findByIdAndUpdate(req.params.projectID, updateProject, (err, project) => {
+     
+    if (err) { next(err); }
+  
+    res.redirect("/");
+  });
+});
 
-  //   // User.findByIdAndUpdate(req.user._id,{
-  //   //   $push: {projectIDs: newProject._id} }, (err, user) => {
-  //   //   if (err) {return next(err);}
+router.post('/publish/:projectID', (req, res, next) => {
 
-  //     res.redirect('home');
-  // });
+  const updateProject = {
+    isPublic: true,
+   };
+
+  Project.findByIdAndUpdate(req.params.projectID, updateProject, (err, project) => {
+      if (err) {return next(err); }
+      res.redirect('/');
+  });
 });
 
 router.post('/new', (req, res, next) => {

@@ -1,7 +1,15 @@
 <form action="/project/save/<%= project._id %>" method="post">
-  <button>Save</button> 
+  <label for="projectName">Project Name</label>
+  <input name="projectName" type="text" value="<%= project.projectName %>">
+  <label for="penHTML">HTML</label>
+  <input name="penHTML" value="<%= project.file.fileHTML %>">
+  <label for="penCSS">CSS</label>
+  <input name="penCSS" value="<%= project.file.fileCSS %>">
+  <label for="penJS">JS</label>
+  <input name="penJS" value="<%= project.file.fileJS %>"></input>
+  <button type="submit" id="save-project-btn">Save</button> 
 </form>
 
 <form action="/project/publish/<%= project._id %>" method="post">
-  <button>Publish</button>
+  <button type="submit" id="publish-project-btn">Publish</button>
 </form>

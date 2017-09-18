@@ -24,19 +24,6 @@ $(document).ready(function(){
 
 
     // AJAX request to check user log-in status on new project
-
-    $("#new-project-submit").on("click", ()=> {
-        isUserLoggedIn();
-        $("#secret-projectName").val($("#project-name").val());
-        $("#secret-projectHTML").val($("#pen-HTML").val());
-        $("#secret-projectCSS").val($("#pen-CSS").val());
-        $("#secret-projectJS").val($("#pen-JS").val());
-        $(".hidden-input").hide();
-    });
-
-    $("#get-code").on("click", function(){
-        getInfo();
-      });
     
 });
 
