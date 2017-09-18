@@ -14,7 +14,7 @@ $(document).ready(function(){
 
     // $(".signup-link").on("click", function(){
     //     $("#signup-box").css("display", "flex");
-    //     $("#login-form").css("display", "none"); 
+    //     $("#login-form").css("display", "none");
     //     $("#main-overlay").css("display", "block");
     // });
 
@@ -37,7 +37,7 @@ $(document).ready(function(){
     $("#get-code").on("click", function(){
         getInfo();
       });
-    
+
 });
 
 function isUserLoggedIn() {
@@ -60,18 +60,18 @@ function serveSignup (bool) {
     if (!bool) {
         $("#project-signup-box").css("display", "flex");
         $("#main-overlay").css("display", "block");
-     } 
+     }
 }
 
 function getInfo() {
     console.log("HOLA");
     $("#results-div").remove();
-    $("#results-box").append("<div id='results-div'></h1>")
+    $("#results-box").append("<div id='results-div'></h1>");
     const penHTML = $("#pen-HTML").val();
     const penCSS = $("#pen-CSS").val();
     const penJS = $("#pen-JS").val();
-    console.log("<style>" + penCSS + "</style>")
-    $("#results-div").append("<style>" + penCSS + "</style>")
+    console.log("<style>" + penCSS + "</style>");
+    $("#results-div").append("<style>" + penCSS + "</style>");
     $("#results-div").append(penHTML);
-    $("#results-div").append("<script>" + penJS + "</script>")
+    $("#results-div").append("<script>" + penJS + "</script>");
   }
