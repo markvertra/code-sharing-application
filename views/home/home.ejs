@@ -12,7 +12,7 @@ crossorigin="anonymous"></script>
           
           <script>
                 var thumbnailRenderer = function (projectId, htmlFile, cssFile, jsFile) {
-
+                    console.log(cssFile)
                     const frame = document.getElementById(projectId);
                     const contents = frame.contentWindow.document;
                     const body = contents.body
@@ -20,6 +20,7 @@ crossorigin="anonymous"></script>
 
                     const bodyText = htmlFile;
                     styling.innerHTML = "<style>" + cssFile + "</style>";
+                    body.innerHTML;
                   };
                 thumbnailRenderer("<%= project._id %>", "<%= project.file.fileHTML %>", "<%= project.file.fileCSS %>", "<%= project.file.fileJS %>")
           </script>

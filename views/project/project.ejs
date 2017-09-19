@@ -1,3 +1,8 @@
+<div class="editor-container">
+  <div id="HTMLeditor" class="editor">HTML</div>
+  <div id="CSSeditor" class="editor">CSS</div>
+  <div id="JSeditor" class="editor">JS</div>
+</div>
 
 <form action="/project/save/<%= project._id %>" method="post">
   <label for="projectName">Project Name</label>
@@ -31,10 +36,18 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js></script>
 <script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/twilight");
-    editor.session.setMode("ace/mode/javascript");
+    var htmlEditor = ace.edit("HTMLeditor")
+    var cssEditor = ace.edit("CSSeditor")
+    var jsEditor = ace.edit("JSeditor");
+    jsEditor.setTheme("ace/theme/twilight");
+    jsEditor.session.setMode("ace/mode/javascript");
+    cssEditor.setTheme("ace/theme/twilight");
+    cssEditor.session.setMode("ace/mode/css");
+    htmlEditor.setTheme("ace/theme/twilight");
+    htmlEditor.session.setMode("ace/mode/html");
+
 </script>
 
 <script src="/javascripts/renderer.js"></script>
