@@ -27,6 +27,7 @@ router.post('/save/:projectID', (req, res, next) => {
 router.post('/publish/:projectID', (req, res, next) => {
 
   const updateProject = {
+    projectName: req.body.hiddenProjectName,
     isPublic: true,
     file: {fileHTML: req.body.hiddenHTML,
             fileCSS: req.body.hiddenCSS,
@@ -72,10 +73,10 @@ router.get('/:projectID', (req, res, next) => {
     if (err) {next(err);}
     if (typeof req.user === "undefined") {
       const user = { _id: 999, username: "anonymous" };
-      res.render('project/project', { project: project, user: user });
+      res.render('project/project', { project: project, user: user, layout: 'layouts/project-layout' });
     } else {
       const user = req.user;
-      res.render('project/project', { project: project, user: user });
+      res.render('project/project', { project: project, user: user, layout: 'layouts/project-layout' });
     }
     
   });

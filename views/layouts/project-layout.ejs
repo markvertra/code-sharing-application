@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Code Sharing Application</title>
+</head>
+<body>
+<div id="main-overlay">
+</div>
+<div class="navbar">
+    <div class="home-box">
+        <a href="/" class="navbar-btn">Home</a>
+    </div>
+    <% if (userSignedIn) { %>
+      <% if (project.userID == user._id + "") { %>
+      <div id="project-name-navbar">
+          <textarea id="navbar-project-name-input"><%= project.projectName %></textarea>
+      </div>
+      <div id="project-buttons-navbar">
+          <button type="submit" id="navbar-save">Save</button>
+          <button type="submit" id="navbar-publish">Publish</button>
+      </div>
+      <% } %>
+    <% } %>
+    <ul class="navbar-list">
+        <li>
+            <% if (userSignedIn) { %>
+            <a href="/profile/myprofile" class="navbar-btn">My Profile</a>
+            <% } %>
+        </li>
+        <% if (!userSignedIn) { %>
+            <li class="login-btn">
+                <a href="/login" class="navbar-btn">Log In</a>
+            </li>
+        <% } else { %>
+            <li class="logout-btn">
+                <a href="/logout" class="navbar-btn">Log-out</a>
+            </li>
+        <% } %>
+    </ul>
+    </div>
+</div>
+    
+<div class="main-content">
+<%- body -%>
+</div>
+
+<div class="footer">
+    
+</div>
+
+<script
+src="https://code.jquery.com/jquery-3.2.1.min.js"
+integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous"></script>
+    <script src="/javascripts/main.js"></script>
+</body>
+</html>

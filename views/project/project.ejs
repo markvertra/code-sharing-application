@@ -1,32 +1,28 @@
 <div class="edit-panel-container">
   <div class="edit-window-container">
-    <h5>HTML</h5>
+    <div class="edit-title-box"><h5>HTML</h5></div> 
     <div id="HTMLeditor" class="editor"><%= project.file.fileHTML %></div>
   </div>
   <div class="edit-window-container">
-    <h5>CSS</h5>
+    <div class="edit-title-box"><h5>CSS</h5></div>
     <div id="CSSeditor" class="editor"><%= project.file.fileCSS %></div>
   </div>
   <div class="edit-window-container">
-    <h5>JS</h5>
+    <div class="edit-title-box"><h5>JS</h5></div>
     <div id="JSeditor" class="editor"><%= project.file.fileJS %></div>
   </div>
 </div>
 
 <form action="/project/save/<%= project._id %>" method="post">
-  <label for="projectName">Project Name</label>
-  <textarea name="projectName" id="projectName" type="text"><%= project.projectName %></textarea>
+  <label for="projectName" class="hidden">Project Name</label>
+  <textarea name="projectName" id="projectName" type="text" class="hidden"><%= project.projectName %></textarea>
   <label for="writeHTML"></label>
   <textarea  name="writeHTML" id="writeHTML" class="hidden"><%= project.file.fileHTML %></textarea>
   <label for="writeCSS"></label>
   <textarea name="writeCSS" id="writeCSS" class="hidden"><%= project.file.fileCSS %></textarea>
   <label for="writeJS"></label>
   <textarea name="writeJS" id="writeJS" class="hidden"><%= project.file.fileJS %></textarea>
-    <% if (userSignedIn) { %>
-      <% if (project.userID == user._id + "") { %>
-       <button type="submit" id="save-project-btn">Save</button> 
-      <% } %>
-    <% } %>
+       <button type="submit" id="save-project-btn" class="hidden">Save</button> 
 </form>
 
 <form action="/project/publish/<%= project._id %>" method="post">
@@ -34,11 +30,7 @@
   <input name="hiddenHTML" id="hiddenHTML" type="text" class="hidden" value="<%= project.file.fileHTML %>">
   <input name="hiddenCSS" id="hiddenCSS" type="text" class="hidden" value="<%= project.file.fileCSS %>">
   <input name="hiddenJS" id="hiddenJS" type="text" class="hidden" value="<%= project.file.fileJS %>">
-    <% if (userSignedIn) { %>
-      <% if (project.userID == user._id + "") { %>
-    <button type="submit" id="publish-project-btn">Publish</button>
-      <% } %>
-    <% } %>
+    <button type="submit" id="publish-project-btn" class="hidden">Publish</button>
 </form>
 <div class="display-container">
   <iframe id="results-frame"></iframe>

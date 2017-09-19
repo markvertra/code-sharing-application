@@ -18,6 +18,15 @@ $(document).ready(function(){
         pageRenderer();
     });
 
+    $("#navbar-save").on("click", ()=> {;
+        $("#save-project-btn").trigger("click");
+    });
+
+    $("#navbar-publish").on("click", ()=> {
+        $("#publish-project-btn").trigger("click");
+    });
+
+
 });
 
 function pageRenderer () {
@@ -36,10 +45,11 @@ function pageRenderer () {
     styling.html(cssEditor.getValue());
     $("#writeHTML").val(htmlEditor.getValue());
     $("#writeJS").val(jsEditor.getValue());
-    $("#writeCSS").val(cssEditor.getValue())
+    $("#writeCSS").val(cssEditor.getValue());
     $("#hiddenHTML").val($("#writeHTML").val());
     $("#hiddenJS").val($("#writeJS").val());
     $("#hiddenCSS").val($("#writeCSS").val());
+    $("#projectName").val($("#navbar-project-name-input").val())
     $("#hiddenProjectName").val($("#projectName").val());
 }
 
