@@ -1,18 +1,27 @@
-<div class="editor-container">
-  <div id="HTMLeditor" class="editor">HTML</div>
-  <div id="CSSeditor" class="editor">CSS</div>
-  <div id="JSeditor" class="editor">JS</div>
+<div class="edit-panel-container">
+  <div class="edit-window-container">
+    <h5>HTML</h5>
+    <div id="HTMLeditor" class="editor"><%= project.file.fileHTML %></div>
+  </div>
+  <div class="edit-window-container">
+    <h5>CSS</h5>
+    <div id="CSSeditor" class="editor"><%= project.file.fileCSS %></div>
+  </div>
+  <div class="edit-window-container">
+    <h5>JS</h5>
+    <div id="JSeditor" class="editor"><%= project.file.fileJS %></div>
+  </div>
 </div>
 
 <form action="/project/save/<%= project._id %>" method="post">
   <label for="projectName">Project Name</label>
   <textarea name="projectName" id="projectName" type="text"><%= project.projectName %></textarea>
-  <label for="writeHTML">HTML</label>
-  <textarea  name="writeHTML" id="writeHTML"><%= project.file.fileHTML %></textarea>
-  <label for="writeCSS">CSS</label>
-  <textarea name="writeCSS" id="writeCSS"><%= project.file.fileCSS %></textarea>
-  <label for="writeJS">JS</label>
-  <textarea name="writeJS" id="writeJS"><%= project.file.fileJS %></textarea>
+  <label for="writeHTML"></label>
+  <textarea  name="writeHTML" id="writeHTML" class="hidden"><%= project.file.fileHTML %></textarea>
+  <label for="writeCSS"></label>
+  <textarea name="writeCSS" id="writeCSS" class="hidden"><%= project.file.fileCSS %></textarea>
+  <label for="writeJS"></label>
+  <textarea name="writeJS" id="writeJS" class="hidden"><%= project.file.fileJS %></textarea>
     <% if (userSignedIn) { %>
       <% if (project.userID == user._id + "") { %>
        <button type="submit" id="save-project-btn">Save</button> 
@@ -37,18 +46,6 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js></script>
-<script>
-    var htmlEditor = ace.edit("HTMLeditor")
-    var cssEditor = ace.edit("CSSeditor")
-    var jsEditor = ace.edit("JSeditor");
-    jsEditor.setTheme("ace/theme/twilight");
-    jsEditor.session.setMode("ace/mode/javascript");
-    cssEditor.setTheme("ace/theme/twilight");
-    cssEditor.session.setMode("ace/mode/css");
-    htmlEditor.setTheme("ace/theme/twilight");
-    htmlEditor.session.setMode("ace/mode/html");
-
-</script>
 
 <script src="/javascripts/renderer.js"></script>
 

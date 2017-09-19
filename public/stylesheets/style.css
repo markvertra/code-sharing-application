@@ -228,17 +228,18 @@ input:focus {
   display: none;
 }
 
-.editor-container {
+.edit-panel-container {
   display: flex;
   justify-content: center;
 }
 
-.editor {
-  height: 300px;
+.edit-window-container {
   width: 30%;
 }
 
-
+.editor {
+  height: 300px;
+}
 
 /* SETTINGS STYLES */
 
