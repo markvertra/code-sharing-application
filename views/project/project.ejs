@@ -8,7 +8,9 @@
   <textarea name="writeCSS" id="writeCSS"><%= project.file.fileCSS %></textarea>
   <label for="writeJS">JS</label>
   <textarea name="writeJS" id="writeJS"><%= project.file.fileJS %></textarea>
+    <% if (userSignedIn) { %>
     <button type="submit" id="save-project-btn">Save</button> 
+    <% } %>
 </form>
 
 <form action="/project/publish/<%= project._id %>" method="post">
@@ -16,8 +18,9 @@
   <input name="hiddenHTML" id="hiddenHTML" type="text" class="hidden" value="<%= project.file.fileHTML %>">
   <input name="hiddenCSS" id="hiddenCSS" type="text" class="hidden" value="<%= project.file.fileCSS %>">
   <input name="hiddenJS" id="hiddenJS" type="text" class="hidden" value="<%= project.file.fileJS %>">
-  
+    <% if (userSignedIn) { %>
     <button type="submit" id="publish-project-btn">Publish</button>
+    <% } %>
 </form>
 <div class="display-container">
   <iframe id="results-frame"></iframe>

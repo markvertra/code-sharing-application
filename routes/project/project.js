@@ -41,7 +41,7 @@ router.post('/publish/:projectID', (req, res, next) => {
 });
 
 router.post('/new', (req, res, next) => {
-
+  
   const newProject = new Project({
     projectName: "My Random Project",
     userID: req.user._id,
@@ -72,5 +72,13 @@ router.get('/:projectID', (req, res, next) => {
     res.render('project/project', { project: project });
   });
 });
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next(); 
+  } else {
+    res.redirect('/login')
+  }
+}
 
 module.exports = router;
