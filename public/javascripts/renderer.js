@@ -1,11 +1,11 @@
 var htmlEditor = ace.edit("HTMLeditor");
 var cssEditor = ace.edit("CSSeditor");
 var jsEditor = ace.edit("JSeditor");
-jsEditor.setTheme("ace/theme/twilight");
+jsEditor.setTheme("ace/theme/terminal");
 jsEditor.session.setMode("ace/mode/javascript");
-cssEditor.setTheme("ace/theme/twilight");
+cssEditor.setTheme("ace/theme/terminal");
 cssEditor.session.setMode("ace/mode/css");
-htmlEditor.setTheme("ace/theme/twilight");
+htmlEditor.setTheme("ace/theme/terminal");
 htmlEditor.session.setMode("ace/mode/html"); 
 
 $(document).ready(function(){
