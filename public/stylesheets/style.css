@@ -2,11 +2,18 @@
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: 0;
+}
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   font-family: 'Droid-serif', serif;
 }
 
+textarea {
+  resize: none;
+}
 
 a {
   color: #00B7FF;
@@ -197,13 +204,61 @@ input:focus {
 }
 
 #results-frame {
-  border: 1px solid black;
-  height: 500px;
+  border: 5px solid black;
+  height: 50vh;
   width: 100%;
+  background-color: rgba(127, 165, 155, 0.67);
 }
 
 .hidden {
   display: none;
+}
+
+.project-info-display {
+  display: flex;
+  justify-content: center;
+}
+
+#project-name-navbar {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#navbar-project-name-input {
+  height: 30px;
+  width: 200px;
+  padding: 6px;
+  transition: width 1s;
+  background-color:black;
+  color: white;
+  border: 1px solid white;
+}
+
+#navbar-project-name-input:focus {
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+#project-buttons-navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 2px;
+}
+
+#project-buttons-navbar button {
+  background-color: rgba(0,0,0,0);
+  color: white;
+  margin: 5px;
+  box-shadow: 0;
+}
+
+#project-buttons-navbar button:hover {
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px 1px white;
 }
 
 .edit-panel-container {
@@ -219,6 +274,7 @@ input:focus {
   width: 100%;
   color: white;
   background-color: black;
+  padding: 5px 20px;
 }
 
 .edit-title-box h5 {

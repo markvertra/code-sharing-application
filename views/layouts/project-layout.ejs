@@ -18,12 +18,14 @@
     </div>
     <% if (userSignedIn) { %>
       <% if (project.userID == user._id + "") { %>
-      <div id="project-name-navbar">
-          <textarea id="navbar-project-name-input"><%= project.projectName %></textarea>
-      </div>
-      <div id="project-buttons-navbar">
-          <button type="submit" id="navbar-save">Save</button>
-          <button type="submit" id="navbar-publish">Publish</button>
+      <div class="project-info-display">
+        <div id="project-name-navbar">
+            <textarea id="navbar-project-name-input"><%= project.projectName %></textarea>
+        </div>
+        <div id="project-buttons-navbar">
+            <button type="submit" id="navbar-save">Save</button>
+            <button type="submit" id="navbar-publish">Publish</button>
+        </div>
       </div>
       <% } %>
     <% } %>
