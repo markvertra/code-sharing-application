@@ -9,7 +9,9 @@
   <label for="writeJS">JS</label>
   <textarea name="writeJS" id="writeJS"><%= project.file.fileJS %></textarea>
     <% if (userSignedIn) { %>
-    <button type="submit" id="save-project-btn">Save</button> 
+      <% if (project.userID == user._id + "") { %>
+       <button type="submit" id="save-project-btn">Save</button> 
+      <% } %>
     <% } %>
 </form>
 
@@ -19,7 +21,9 @@
   <input name="hiddenCSS" id="hiddenCSS" type="text" class="hidden" value="<%= project.file.fileCSS %>">
   <input name="hiddenJS" id="hiddenJS" type="text" class="hidden" value="<%= project.file.fileJS %>">
     <% if (userSignedIn) { %>
+      <% if (project.userID == user._id + "") { %>
     <button type="submit" id="publish-project-btn">Publish</button>
+      <% } %>
     <% } %>
 </form>
 <div class="display-container">

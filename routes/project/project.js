@@ -41,7 +41,7 @@ router.post('/publish/:projectID', (req, res, next) => {
 });
 
 router.post('/new', (req, res, next) => {
-  
+
   const newProject = new Project({
     projectName: "My Random Project",
     userID: req.user._id,
@@ -67,9 +67,17 @@ router.post('/new', (req, res, next) => {
 
 
 router.get('/:projectID', (req, res, next) => {
+  
   Project.findById((req.params.projectID), (err, project) => {
     if (err) {next(err);}
-    res.render('project/project', { project: project });
+    if (typeof req.user === "undefined") {
+      const user = { _id: 999, username: "anonymous" };
+      res.render('project/project', { project: project, user: user });
+    } else {
+      const user = req.user;
+      res.render('project/project', { project: project, user: user });
+    }
+    
   });
 });
 
