@@ -1,3 +1,5 @@
+// SETUP 3 ACE WINDOWS
+
 var htmlEditor = ace.edit("HTMLeditor");
 var cssEditor = ace.edit("CSSeditor");
 var jsEditor = ace.edit("JSeditor");
@@ -10,7 +12,7 @@ htmlEditor.session.setMode("ace/mode/html");
 
 $(document).ready(function(){
 
-    // SETUP 3 ACE WINDOWS
+    
     
     pageRenderer();
 
@@ -43,6 +45,8 @@ function pageRenderer () {
     bodyText = htmlEditor.getValue() + "<script>" + jsEditor.getValue() + "</script>";
     body.html(bodyText);
     styling.html(cssEditor.getValue());
+
+// moves data to two hidden forms that then push and save the content. getValue is a method of ace
     $("#writeHTML").val(htmlEditor.getValue());
     $("#writeJS").val(jsEditor.getValue());
     $("#writeCSS").val(cssEditor.getValue());
@@ -52,6 +56,8 @@ function pageRenderer () {
     $("#projectName").val($("#navbar-project-name-input").val())
     $("#hiddenProjectName").val($("#projectName").val());
 }
+
+// Function to reload Iframe and thus reload javascript
 
 function iframeReplacer (iframe) {
     iframe.remove();
