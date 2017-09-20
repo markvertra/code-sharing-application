@@ -219,7 +219,13 @@ input:focus {
 }
 
 .search-projects {
-  width: 250px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.none-found {
+  display: none;
+  margin-bottom: 20px;
 }
 
 /* PROJECT STYLES */

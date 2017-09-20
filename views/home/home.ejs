@@ -5,9 +5,8 @@
 
 <div class="projects-section">
   <div class="section-title container">
-    <h4>Latest Projects</h4>
+    <h4>Newest Projects</h4>
     <input class="search-projects" type="search" placeholder="Search projects">
-    <button class="search-projects-btn" type="submit">Search</button>
   </div>
   <div class="projects-display">
     <% projects.forEach((project) => { %>
@@ -38,6 +37,9 @@
       </div>
       <% } %>
     <% }) %>
+  <div class="none-found">
+    <p>Unfortunately no projects match your current search</p>
+  </div>
   </div>
 </div>
 

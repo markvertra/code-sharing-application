@@ -1,12 +1,15 @@
 $(document).ready(function(){
 
     $(".search-projects").keyup(() => {
+        $(".none-found").hide();
         const searchText = $(".search-projects").val();
         const projectBoxes = $(".project-box");
         const includedProjectBoxes = $(".project-box:contains(" + searchText + ")");
         projectBoxes.hide();
         includedProjectBoxes.show();
-        console.log(includedProjectBoxes);
+        if (includedProjectBoxes.length === 0) {
+            $(".none-found").show();
+        }
     });
 
 });
