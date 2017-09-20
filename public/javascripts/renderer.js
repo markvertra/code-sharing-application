@@ -1,5 +1,7 @@
 // SETUP 3 ACE WINDOWS
 
+const P5Library = '<script src= "https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.min.js"></script>';
+
 var htmlEditor = ace.edit("HTMLeditor");
 var cssEditor = ace.edit("CSSeditor");
 var jsEditor = ace.edit("JSeditor");
@@ -10,26 +12,48 @@ cssEditor.session.setMode("ace/mode/css");
 htmlEditor.setTheme("ace/theme/terminal");
 htmlEditor.session.setMode("ace/mode/html");
 
+
+
 $(document).ready(function(){
-
-
-
-    pageRenderer();
+    createIframe();
 
     $("textarea").keyup(function() {
-        pageRenderer();
+        createIframe();
     });
 
-    $("#navbar-save").on("click", ()=> {;
+    $("#navbar-save").on("click", () => {
         $("#save-project-btn").trigger("click");
     });
 
     $("#navbar-publish").on("click", ()=> {
         $("#publish-project-btn").trigger("click");
     });
-
-
 });
+
+function createScript(src){
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = src;
+  return script;
+}
+
+
+function createIframe() {
+  if ($('iframe')) {
+    iframeReplacer($('iframe'));
+  }
+
+  var script = createScript("https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.min.js");
+
+  var newIframe = $('<iframe>');
+  newIframe.attr('id', 'results-frame');
+
+  newIframe.on('load', function() {
+      $(this).contents().find('body').append(script);
+  });
+  $('body').append(newIframe);
+  pageRenderer();
+}
 
 function pageRenderer () {
 
@@ -40,8 +64,8 @@ function pageRenderer () {
 
 
     let bodyText = "";
-    bodyText = htmlEditor.getValue() + "<script>" + jsEditor.getValue() + "</script>";
-    body.html(bodyText);
+    bodyText = htmlEditor.getValue() + "<script>" + jsEditor.getValue() + "</script>" ;
+    body.append(bodyText);
     styling.html( '<style>' + cssEditor.getValue() + '</style>');
 
 // moves data to two hidden forms that then push and save the content. getValue is a method of ace
@@ -51,13 +75,12 @@ function pageRenderer () {
     $("#hiddenHTML").val($("#writeHTML").val());
     $("#hiddenJS").val($("#writeJS").val());
     $("#hiddenCSS").val($("#writeCSS").val());
-    $("#projectName").val($("#navbar-project-name-input").val())
+    $("#projectName").val($("#navbar-project-name-input").val());
     $("#hiddenProjectName").val($("#projectName").val());
 }
 
 // Function to reload Iframe and thus reload javascript
-
 function iframeReplacer (iframe) {
     iframe.remove();
-    iframe.appendTo($(".display-container"));
+    //iframe.appendTo($(".display-container"));
 }

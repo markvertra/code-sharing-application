@@ -1,6 +1,6 @@
 <div class="edit-panel-container">
   <div class="edit-window-container">
-    <div class="edit-title-box"><h5>HTML</h5></div> 
+    <div class="edit-title-box"><h5>HTML</h5></div>
     <div id="HTMLeditor" class="editor"><%= project.file.fileHTML %></div>
   </div>
   <div class="edit-window-container">
@@ -22,7 +22,7 @@
   <textarea name="writeCSS" id="writeCSS" class="hidden"><%= project.file.fileCSS %></textarea>
   <label for="writeJS"></label>
   <textarea name="writeJS" id="writeJS" class="hidden"><%= project.file.fileJS %></textarea>
-       <button type="submit" id="save-project-btn" class="hidden">Save</button> 
+       <button type="submit" id="save-project-btn" class="hidden">Save</button>
 </form>
 
 <form action="/project/publish/<%= project._id %>" method="post">
@@ -33,11 +33,10 @@
     <button type="submit" id="publish-project-btn" class="hidden">Publish</button>
 </form>
 <div class="display-container">
-  <iframe id="results-frame"></iframe>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js></script>
 
 <script src="/javascripts/renderer.js"></script>
-

@@ -82,7 +82,7 @@ app.locals.thumbnailRenderer = function (projectId, htmlFile, cssFile, jsFile) {
                   .append('<style></style>')
                   .children('style');
 
-  const bodyText = htmlFile + "<script>" + jsFile + "</script>"
+  const bodyText = htmlFile + "<script>" + jsFile + "</script>";
   body.html(bodyText);
   styling.html(cssFile);
 };
