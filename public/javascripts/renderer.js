@@ -8,12 +8,12 @@ jsEditor.session.setMode("ace/mode/javascript");
 cssEditor.setTheme("ace/theme/terminal");
 cssEditor.session.setMode("ace/mode/css");
 htmlEditor.setTheme("ace/theme/terminal");
-htmlEditor.session.setMode("ace/mode/html"); 
+htmlEditor.session.setMode("ace/mode/html");
 
 $(document).ready(function(){
 
-    
-    
+
+
     pageRenderer();
 
     $("textarea").keyup(function() {
@@ -36,15 +36,13 @@ function pageRenderer () {
     const frame = $("iframe");
     const contents = frame.contents();
     const body = contents.find('body');
-    const styling = contents
-                    .find('head')
-                    .append('<style></style>')
-                    .children('style');
+    const styling = contents.find('head');
 
-    let bodyText = ""; 
+
+    let bodyText = "";
     bodyText = htmlEditor.getValue() + "<script>" + jsEditor.getValue() + "</script>";
     body.html(bodyText);
-    styling.html(cssEditor.getValue());
+    styling.html( '<style>' + cssEditor.getValue() + '</style>');
 
 // moves data to two hidden forms that then push and save the content. getValue is a method of ace
     $("#writeHTML").val(htmlEditor.getValue());
@@ -63,6 +61,3 @@ function iframeReplacer (iframe) {
     iframe.remove();
     iframe.appendTo($(".display-container"));
 }
-
-
-
