@@ -360,6 +360,26 @@ input:focus {
   width: 130px;
 }
 
+/* PROFILE STYLES */
+
+.profile-info-wrapper {
+  padding: 30px;
+}
+
+.profile-project-listing {
+  font-size: 1.2em;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.profile-project-listing a:hover {
+  color: black;
+  font-size: 1.02em;
+}
+
+.profile-project-listing {
+  text-align: center;
+}
 
 
 /* ADMIN STYLES */

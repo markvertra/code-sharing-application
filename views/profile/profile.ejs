@@ -1,16 +1,17 @@
-
-<div>
-  <ul>
-    Username: <%= user.username %>
-  </ul>
-  <ul>
-    My projects:
+<div class="profile-info-wrapper">
+  <div class="profile-info">
+    <div class="profile-user-title">
+      <h4>Username: <%= user.username %></h4>
+    </div>
+    <h4>Projects:</h4>
+    <ul>
     <% if (user.projectIDs.length === 0) { %>
-      <li>No projects</li>
+      <li>User has no saved projects</li>
     <% } else { %>
       <% user.projectIDs.forEach((project) => { %>
-        <li><a href="/project/<%= project._id %>"> <%=project.projectName %></a></li>
+        <li class="profile-project-listing"><a href="/project/<%= project._id %>"> <%=project.projectName %></a></li>
       <% }); %>
     <% } %>
-  </ul>
+    </ul>
+  </div>
 </div>
