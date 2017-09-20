@@ -218,6 +218,10 @@ input:focus {
   background-color: black;
 }
 
+.search-projects {
+  width: 250px;
+}
+
 /* PROJECT STYLES */
 
 .project-canvas {
