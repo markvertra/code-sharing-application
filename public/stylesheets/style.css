@@ -60,6 +60,11 @@ input:focus {
 
 /* GENERAL CLASSES */
 
+.container {
+  margin: auto;
+  text-align: center;
+}
+
 /* Navbar Link Button */ 
 .navbar-btn {
   padding: 32px;
@@ -81,7 +86,7 @@ input:focus {
 .log-btn {
   color: white;
   border-radius: 15px;
-  padding: 5px;
+  padding: 5px 10px;
   font-size: 0.9em;
   border: 2px solid white;
   text-decoration: none;
@@ -97,6 +102,16 @@ input:focus {
 /* Delete Button */ 
 .danger-btn {
   background-color: red;
+  padding: 5px 10px;
+  box-shadow: 1px 1px 1px 0.5;
+  border: 1px solid white;
+  color: white;
+  width: 120px;
+  transition: width 1s;
+}
+
+.danger-btn:hover{
+  width: 130px;
 }
 
 /* Standard Input */
@@ -295,6 +310,16 @@ input:focus {
 
 /* SETTINGS STYLES */
 
+.settings-title {
+  margin: 20px;
+}
+
+.settings-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
 .settings-form {
   display: flex; 
   flex-direction: column;
@@ -302,7 +327,30 @@ input:focus {
 
 .settings-option input{
   margin: 15px;
+  box-shadow: 1px 1px 1px 1px;
 }
+
+.settings-option input:focus{
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.edit-settings-btn {
+  background-color: black;
+  box-shadow: 1px 1px 1px 1px;
+  margin: 10px 0px;
+  border: 1px solid white;
+  padding: 5px 10px;
+  color: white;
+  width: 120px;
+  transition: width 1s;
+}
+
+.edit-settings-btn:hover {
+  width: 130px;
+}
+
+
 
 /* ADMIN STYLES */
 

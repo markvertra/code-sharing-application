@@ -1,27 +1,30 @@
-<h3>Welcome to your profile settings <%= user.username %> </h3>
+<div class="container settings-title">
+    <h3>Welcome to your profile settings <%= user.username %> </h3>
+</div>
+<div class="settings-container">
+    <div class="settings-area">
+        <form action="/settings/edituser/<%= user._id %>" method="post">
+            <div class="settings-form">
+                <div class="settings-option">
+                    <label class="code-label" for="password">Password</label>
+                    <input class="code-input" type="password" name="password">
+                </div>
+                <div class="settings-option">
+                    <label class="code-label" for="email">Email</label>
+                    <input class="code-input" type="email" name="email" value="<%= user.email %>">
+                </div>
+                <div class="settings-option">
+                <% if (typeof errorMessage !== "undefined") { %>
+                    <div class="error-message"><%= errorMessage %></div>
+                <% } %>
+                <button class="edit-settings-btn" type="submit">Edit User</button>
+                </div>
+            </div>
+        </form>
 
-<form action="/settings/edituser/<%= user._id %>" method="post">
-    <div class="settings-form">
-        <div class="settings-option">
-            <label class="code-label" for="password">Password</label>
-            <input class="code-input" type="password" name="password">
-        </div>
-        <div class="settings-option">
-            <label class="code-label" for="email">Email</label>
-            <input class="code-input" type="email" name="email" value="<%= user.email %>">
-        </div>
-        <div class="settings-option">
-        <% if (typeof errorMessage !== "undefined") { %>
-            <div class="error-message"><%= errorMessage %></div>
-        <% } %>
-        <button class="code-btn" type="submit">Edit User</button>
-        </div>
+        <form action="/settings/deleteuser/<%= user._id %>" method="post">
+            <button class="code-btn danger-btn" type="submit">Delete Account</button>
+        </form>
     </div>
-</form>
-
-<form action="/settings/deleteuser/<%= user._id %>" method="post">
-    <button class="code-btn danger-btn" type="submit">Delete Account</button>
-</form>
-
-
-
+    <div></div>
+</div>
