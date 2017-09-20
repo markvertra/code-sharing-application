@@ -1,54 +1,15 @@
-
 $(document).ready(function(){
 
-    // Files to appear and disappear login and sign-up
-    // $(".main-content").click(function(){
-    //     $('#login-form').hide();
-    //   });
-
-    // $('#main-overlay').click(function(){
-    //     $('#main-overlay').hide();
-    //     $('#signup-box').hide();
-    //     $('#project-signup-box').hide();
-    //   });
-
-    // $(".signup-link").on("click", function(){
-    //     $("#signup-box").css("display", "flex");
-    //     $("#login-form").css("display", "none");
-    //     $("#main-overlay").css("display", "block");
-    // });
-
-    // $("#main-signup").on("click", function(){
-    //     $("#main-overlay").css("display", "none");
-    // });
-
-
-    // AJAX request to check user log-in status on new project
+    $(".search-projects").keyup(() => {
+        const searchText = $(".search-projects").val();
+        const projectBoxes = $(".project-box");
+        const includedProjectBoxes = $(".project-box:contains(" + searchText + ")");
+        projectBoxes.hide();
+        includedProjectBoxes.show();
+        console.log(includedProjectBoxes);
+    });
 
 });
-
-function isUserLoggedIn() {
-    $.ajax({
-        url: "/api/user",
-        method: "get",
-        success: (res) => {
-            if (res.user) {
-
-            }
-            serveSignup(res.user);
-        },
-        failure: (err) => {
-            console.log(err);
-        }
-    });
-}
-
-function serveSignup (bool) {
-    if (!bool) {
-        $("#project-signup-box").css("display", "flex");
-        $("#main-overlay").css("display", "block");
-     }
-}
 
 function getInfo() {
     console.log("HOLA");
