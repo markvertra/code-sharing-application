@@ -9,33 +9,33 @@
     <input class="search-projects" type="search" placeholder="Search projects">
   </div>
   <div class="projects-display">
-    <% projects.forEach((project) => { %>
-      <% if (project.isPublic) { %>
-      <div class="project-box">
-          <div class="project-image">
-            <iframe class="project-image-iframe" id="<%= project._id %>"></iframe>
-            
-            <script>
-                  var thumbnailRenderer = function (projectId, htmlFile, cssFile, jsFile) {
-                      console.log(cssFile)
-                      const frame = document.getElementById(projectId);
-                      const contents = frame.contentWindow.document;
-                      const body = contents.body
-                      const styling = contents.head
+    <% projects.reverse(); projects.forEach((project, i) => { %>
+        <% if (project.isPublic) { %>
+        <div class="project-box">
+            <div class="project-image">
+              <iframe class="project-image-iframe" id="<%= project._id %>"></iframe>
+              
+              <script>
+                    var thumbnailRenderer = function (projectId, htmlFile, cssFile, jsFile) {
+                        console.log(cssFile)
+                        const frame = document.getElementById(projectId);
+                        const contents = frame.contentWindow.document;
+                        const body = contents.body
+                        const styling = contents.head
 
-                      const bodyText = htmlFile;
-                      styling.innerHTML = "<style>" + cssFile + "</style>";
-                      body.innerHTML;
-                    };
-                  thumbnailRenderer("<%= project._id %>", "<%= project.file.fileHTML %>", "<%= project.file.fileCSS %>", "<%= project.file.fileJS %>")
-            </script>
-          </div>
-          <div class="project-info">
-            <p id="project-name"><a class="project-link" href="/project/<%=project._id%>"><%= project.projectName %></a></p>
-            <p id="project-author-name">By: <a href="/profile/<%=project.userID._id%>"><%= project.userID.username %></a></p>
-          </div>
-      </div>
-      <% } %>
+                        const bodyText = htmlFile;
+                        styling.innerHTML = "<style>" + cssFile + "</style>";
+                        body.innerHTML;
+                      };
+                    thumbnailRenderer("<%= project._id %>", "<%= project.file.fileHTML %>", "<%= project.file.fileCSS %>", "<%= project.file.fileJS %>")
+              </script>
+            </div>
+            <div class="project-info">
+              <p id="project-name"><a class="project-link" href="/project/<%=project._id%>"><%= project.projectName %></a></p>
+              <p id="project-author-name">By: <a href="/profile/<%=project.userID._id%>"><%= project.userID.username %></a></p>
+            </div>
+        </div>
+        <% } %>
     <% }) %>
   <div class="none-found">
     <p>Unfortunately no projects match your current search</p>
