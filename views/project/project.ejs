@@ -28,7 +28,7 @@
   <textarea name="writeCSS" id="writeCSS" class="hidden"><%= project.file.fileCSS %></textarea>
   <label for="writeJS"></label>
   <textarea name="writeJS" id="writeJS" class="hidden"><%= project.file.fileJS %></textarea>
-       <button type="submit" id="save-project-btn" class="hidden">Save</button>
+       <button type="submit" id="save-project-btn" class="hidden">Render</button>
 </form>
 
 <form action="/project/publish/<%= project._id %>" method="post">

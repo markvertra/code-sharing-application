@@ -15,7 +15,8 @@ $(document).ready(function(){
     recreateIframe();
 
     $("textarea").keyup(function() {
-        recreateIframe();
+        //recreateIframe();
+        updateContent();
     });
 
     $("#navbar-save").on("click", () => {
@@ -58,7 +59,7 @@ $(document).ready(function(){
           $(".edit-window-container").show();
           $(".lg-navbar").show();
         }
-      });
+    });
 });
 
 function recreateIframe() {
@@ -87,8 +88,6 @@ function updateContent () {
     $("#hiddenProjectName").val($("#projectName").val());
 }
 
-// Function to reload Iframe and thus reload javascript
 function iframeRemover(iframe) {
     iframe.remove();
-    //iframe.appendTo($(".display-container"));
 }
