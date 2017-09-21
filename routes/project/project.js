@@ -16,8 +16,7 @@ router.post('/save/:projectID', (req, res, next) => {
   Project.findByIdAndUpdate(req.params.projectID, updateProject, (err, project) => {
 
     if (err) { next(err); }
-    console.log(project.file.fileJS);
-    res.redirect("/");
+    res.redirect("/project/" + project._id);
   });
 });
 
@@ -41,7 +40,7 @@ router.post('/publish/:projectID', (req, res, next) => {
 router.post('/new', (req, res, next) => {
 
   const newProject = new Project({
-    projectName: "My Random Project",
+    projectName: "My New Project",
     userID: req.user._id,
     isPublic: false,
     file: {fileHTML: "",

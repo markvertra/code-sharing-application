@@ -11,24 +11,12 @@
   <div class="projects-display">
     <% projects.reverse(); projects.forEach((project, i) => { %>
         <% if (project.isPublic) { %>
+        <% var source = project._id %>
+        <% console.log(source) %>
         <div class="project-box">
             <div class="project-image">
-              <iframe class="project-image-iframe" id="<%= project._id %>"></iframe>
-              
-              <script>
-                    var thumbnailRenderer = function (projectId, htmlFile, cssFile, jsFile) {
-                        console.log(cssFile)
-                        const frame = document.getElementById(projectId);
-                        const contents = frame.contentWindow.document;
-                        const body = contents.body
-                        const styling = contents.head
+              <iframe class="project-image-iframe" src= "/render/<%= source%>"> </iframe>
 
-                        const bodyText = htmlFile;
-                        styling.innerHTML = "<style>" + cssFile + "</style>";
-                        body.innerHTML;
-                      };
-                    thumbnailRenderer("<%= project._id %>", "<%= project.file.fileHTML %>", "<%= project.file.fileCSS %>", "<%= project.file.fileJS %>")
-              </script>
             </div>
             <div class="project-info">
               <p id="project-name"><a class="project-link" href="/project/<%=project._id%>"><%= project.projectName %></a></p>
@@ -42,5 +30,3 @@
   </div>
   </div>
 </div>
-
-
