@@ -55,6 +55,11 @@ $(document).ready(function(){
         $("#JS-window-container").hide();
     });
 
+    $(window).resize(() => {
+        if ($(window).width() > 600) {
+          $(".edit-window-container").show();
+        }
+      });
 });
 
 function pageRenderer () {
