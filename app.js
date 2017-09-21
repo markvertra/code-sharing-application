@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const expressLayouts = require('express-ejs-layouts');
+require("dotenv").config();
 
 //Session
 const passport = require('passport');
@@ -34,7 +35,7 @@ const render = require('./routes/render/render');
 const app = express();
 
 //Database
-mongoose.connect("mongodb://localhost/code-sharing-application", {useMongoClient: true});
+mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
