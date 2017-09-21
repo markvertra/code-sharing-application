@@ -7,7 +7,6 @@
 }
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   font-family: 'Droid-serif', serif;
 }
 
@@ -134,6 +133,23 @@ input:focus {
   height: 90px;
   background-color: black;
   line-height: 90px;
+}
+
+
+.sl-navbar {
+  color: white;
+  display: none;
+  text-decoration: none;
+}
+
+@media (max-width: 1000px) {
+  .lg-navbar {
+    display: none;
+  }
+
+  .sl-navbar {
+    display: block;
+  }
 }
 
 
@@ -325,7 +341,17 @@ input:focus {
   display: none; 
 }
 
+
+
 @media (max-width: 600px) {
+  .editor {
+    height: 150px;
+  }
+
+  .lg-navbar {
+    display: none;
+  }
+
   #CSS-window-container {
     display: none;
   }
@@ -337,6 +363,8 @@ input:focus {
   .responsive-change-btns {
     display: block;
   }
+
+ 
 
   #write-html {
     display: none; 

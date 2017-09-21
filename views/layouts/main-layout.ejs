@@ -14,36 +14,54 @@
 </div>
 <div class="navbar">
     <div class="home-box">
-        <a href="/" class="navbar-btn">Home</a>
+        <a href="/" class="navbar-btn lg-navbar">Home</a>
     </div>
+    <div class="home-box-sl">
+        <a href="/" class="sl-navbar">Home</a>
+    </div>
+    <div class="settings-box-sl">
+        <a href="/" class="sl-navbar">Settings</a>
+    </div>
+    <div class="profile-box-sl">
+        <a href="/" class="sl-navbar">My Profile</a>
+    </div>
+    <% if (!userSignedIn) { %>
+        <div class="login-box-sl">
+            <a href="/" class="sl-navbar">Log In</a>
+        </div>
+    <% } else { %>
+        <div class="logout-box-sl">
+            <a href="/" class="sl-navbar">Log Out</a>
+        </div>
+    <% } %>
     <ul class="navbar-list">
         <li>
-            <a href="/admin" class="navbar-btn">Admin Panel</a>
+            <a href="/admin" class="navbar-btn lg-navbar">Admin Panel</a>
         </li>
         <li>
             <% if (userSignedIn) { %>
-                <a href="/settings" class="navbar-btn">User Settings</a>
+                <a href="/settings" class="navbar-btn lg-navbar">User Settings</a>
             <% } %>
         </li>
         <li>
             <% if (userSignedIn) { %>
-            <a href="/profile/myprofile" class="navbar-btn">My Profile</a>
+            <a href="/profile/myprofile" class="navbar-btn lg-navbar">My Profile</a>
             <% } %>
         </li>
         <li>
             <% if (userSignedIn) { %>
             <form action="/project/new" method="post" id="create-project-form">
-                <button type="submit" id="create-project-btn" class="navbar-btn">Create Project</button>
+                <button type="submit" id="create-project-btn" class="navbar-btn lg-navbar">Create Project</button>
             </form>
             <% } %>
         </li>
         <% if (!userSignedIn) { %>
             <li class="login-btn">
-                <a href="/login" class="navbar-btn">Log In</a>
+                <a href="/login" class="navbar-btn lg-navbar">Log In</a>
             </li>
         <% } else { %>
             <li class="logout-btn">
-                <a href="/logout" class="navbar-btn">Log-out</a>
+                <a href="/logout" class="navbar-btn lg-navbar">Log-out</a>
             </li>
         <% } %>
     </ul>

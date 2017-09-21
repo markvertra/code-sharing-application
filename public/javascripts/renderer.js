@@ -58,6 +58,7 @@ $(document).ready(function(){
     $(window).resize(() => {
         if ($(window).width() > 600) {
           $(".edit-window-container").show();
+          $(".lg-navbar").show();
         }
       });
 });

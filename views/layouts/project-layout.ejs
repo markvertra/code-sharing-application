@@ -32,16 +32,16 @@
     <ul class="navbar-list">
         <li>
             <% if (userSignedIn) { %>
-            <a href="/profile/myprofile" class="navbar-btn">My Profile</a>
+            <a href="/profile/myprofile" class="navbar-btn lg-navbar">My Profile</a>
             <% } %>
         </li>
         <% if (!userSignedIn) { %>
             <li class="login-btn">
-                <a href="/login" class="navbar-btn">Log In</a>
+                <a href="/login" class="navbar-btn lg-navbar">Log In</a>
             </li>
         <% } else { %>
             <li class="logout-btn">
-                <a href="/logout" class="navbar-btn">Log-out</a>
+                <a href="/logout" class="navbar-btn lg-navbar">Log-out</a>
             </li>
         <% } %>
     </ul>
