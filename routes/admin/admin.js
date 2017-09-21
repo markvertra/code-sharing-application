@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 
     Project.find({}, (err, projects) => {
     if (err) { next(err);}
-      res.render('admin/admin', {users: users, projects: projects});
+      res.render('admin/admin', {users: users, projects: projects, layout: 'layouts/layout'});
     });
   });
 });
@@ -74,7 +74,7 @@ router.post('/deleteuser/:userID', (req, res, next) => {
 });
 
 router.post('/createproject', upload.any(), (req, res, next) => {
-    
+
       const newProject = new Project({
         projectName: req.body.projectName,
         userID: req.user._id,
@@ -83,15 +83,15 @@ router.post('/createproject', upload.any(), (req, res, next) => {
                fileJS: `/uploads/${req.user._id}/${req.body.projectName}/${req.files.filename}`,
              }
         });
-    
-    
+
+
       newProject.save((err) => {
         if (err) {return next(err);}
-    
+
         User.findByIdAndUpdate(req.user._id,{
           $push: {projectIDs: newProject._id} }, (err, user) => {
           if (err) {return next(err);}
-    
+
           res.redirect(req.headers.referer);
         });
       });

@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 router.get('/', ensureAuthenticated, (req, res, next) => {
   User.findById(req.user.id, (err, user) => {
     if (err) {return next(err);}
-    res.render('settings/settings', {user: user});
+    res.render('settings/settings', {user: user, layout: 'layouts/layout'});
   });
 });
 

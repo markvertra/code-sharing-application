@@ -6,12 +6,7 @@
         <form action="/settings/edituser/<%= user._id %>" method="post">
             <div class="settings-form">
                 <div class="settings-option">
-                    <label class="code-label" for="password">Password</label>
-                    <input class="code-input" type="password" name="password">
-                </div>
-                <div class="settings-option">
-                    <label class="code-label" for="email">Email</label>
-                    <input class="code-input" type="email" name="email" value="<%= user.email %>">
+                    <input class="code-input" type="password" name="password" placeholder="New password">
                 </div>
                 <div class="settings-option">
                 <% if (typeof errorMessage !== "undefined") { %>

@@ -10,7 +10,7 @@ router.get('/:profileId', (req, res, next) => {
   let profileId = req.params.profileId;
   User.findById(profileId).populate('projectIDs', 'projectName').exec((err, user) => {
     if (err) {next(err);}
-    res.render('profile/profile', {user});
+    res.render('profile/profile', {user, layout: 'layouts/layout'});
   });
 });
 

@@ -75,7 +75,6 @@ router.get('/:projectID', (req, res, next) => {
       const user = req.user;
       res.render('project/project', {source, project: project, user: user, layout: 'layouts/project-layout' });
     }
-
   });
 });
 

@@ -7,7 +7,13 @@
 }
 
 body {
-  font-family: 'Droid-serif', serif;
+  margin-top:90px;
+  background-color: black;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.fooClass {
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 textarea {
@@ -52,6 +58,10 @@ input:focus {
   outline: none;
 }
 
+.main-content {
+
+}
+
 .error-message {
   margin-bottom: 10px;
   color: lightcoral;
@@ -64,11 +74,16 @@ input:focus {
   text-align: center;
 }
 
-/* Navbar Link Button */ 
+/* Navbar Link Button */
+.monkey-logo{
+  color : red;
+  z-index: 2;
+
+}
 .navbar-btn {
   padding: 32px;
-  border-top: 3px solid white; 
-  font-size: 1.2em;
+  border-top: 3px solid white;
+  font-size: 0.9em;
   text-decoration: none;
   opacity: 0.8;
   color: white;
@@ -98,7 +113,7 @@ input:focus {
   background-color: rgba(255, 255, 200, 0.1);
 }
 
-/* Delete Button */ 
+/* Delete Button */
 .danger-btn {
   background-color: red;
   padding: 5px 10px;
@@ -116,7 +131,6 @@ input:focus {
 /* Standard Input */
 .code-input {
   padding: 5px;
-  margin: 5px 0px;
 }
 
 /* Standard Label */
@@ -127,14 +141,24 @@ input:focus {
 /* NAVBAR STYLES */
 
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   display: flex;
-  position: relative;
+  opacity: 0.7;
   justify-content: space-between;
   height: 90px;
   background-color: black;
   line-height: 90px;
+  transition: top 0.2s ease-in-out;
+  position: fixed;
 }
 
+.nav-up {
+  top: -90px;
+}
 
 .sl-navbar {
   color: white;
@@ -171,6 +195,7 @@ input:focus {
 /* LOGIN/SIGNUP STYLES */
 
 .login-container {
+  border: 5px dotted white;
   display: flex;
   justify-content: center;
   margin: auto;
@@ -192,11 +217,30 @@ input:focus {
 /* HOME STYLES */
 
 .banner {
-  background-color: black;
+  display:block;
   width: 100%;
-  height: 300px;
+  height: 67em;
   margin-bottom: 20px;
   color: white;
+}
+
+.bannerBakcground{
+  position:absolute;
+  z-index: -1;
+}
+
+.bannerText {
+  position:absolute;;
+  z-index: 1;
+  margin: -100px 0 0 -200px;
+  top: 50%;
+  left: 46%;
+  opacity: 0.5;
+  text-align: center;
+  text-shadow: 0 0 15px #FFFFFF, 0 0 20px #FFFFFF;
+
+  color: black;
+  font-size: 2em;
 }
 
 .projects-display {
@@ -206,7 +250,6 @@ input:focus {
 }
 
 .project-box {
-  border: 1px solid black;
   width: 300px;
   margin: 20px 50px;
   transition: box-shadow 1.5s;
@@ -225,10 +268,13 @@ input:focus {
 }
 
 .project-info {
+  border: 5px solid white;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
   font-size: 0.8em;
-  padding: 2px 5px;
+  text-decoration: none;
+  padding: 6px 6px;
   color: white;
   text-decoration: none;
   background-color: black;
@@ -236,6 +282,8 @@ input:focus {
 
 .search-projects {
   width: 300px;
+  opacity: 0.5;
+  height: 200px;
   margin-bottom: 20px;
 }
 
@@ -250,6 +298,11 @@ input:focus {
   width: 100%;
   height: 800px;
   border: 1px solid black;
+}
+
+.project-link , .project-author {
+  color:red;
+  text-decoration: none;
 }
 
 #results-frame {
@@ -271,6 +324,7 @@ input:focus {
 #project-name-navbar {
   padding: 15px;
   display: flex;
+  text
   flex-direction: column;
   justify-content: center;
 }
@@ -327,7 +381,7 @@ input:focus {
 }
 
 .edit-title-box h5 {
-  margin: 0px; 
+  margin: 0px;
 }
 
 .editor {
@@ -335,10 +389,10 @@ input:focus {
 }
 
 .responsive-change-btns {
-  position: absolute; 
+  position: absolute;
   top: 95px;
   right: 0%;
-  display: none; 
+  display: none;
 }
 
 
@@ -357,17 +411,17 @@ input:focus {
   }
 
   #JS-window-container {
-    display: none; 
+    display: none;
   }
 
   .responsive-change-btns {
     display: block;
   }
 
- 
+
 
   #write-html {
-    display: none; 
+    display: none;
   }
 
   #write-css {
@@ -394,18 +448,20 @@ input:focus {
 }
 
 .settings-container {
+  color:white;
   display: flex;
   justify-content: space-around;
   margin: 20px;
+  border: 5px dotted white;
 }
 
 .settings-form {
-  display: flex; 
+  display: flex;
   flex-direction: column;
 }
 
 .settings-option input{
-  margin: 15px;
+  margin: 0px;
   box-shadow: 1px 1px 1px 1px;
 }
 
@@ -432,7 +488,9 @@ input:focus {
 /* PROFILE STYLES */
 
 .profile-info-wrapper {
+  color:white;
   padding: 30px;
+  border: 5px dotted white;
 }
 
 .profile-project-listing {
@@ -442,7 +500,7 @@ input:focus {
 }
 
 .profile-project-listing a:hover {
-  color: black;
+  color: white;
   font-size: 1.02em;
 }
 
@@ -450,18 +508,19 @@ input:focus {
 /* ADMIN STYLES */
 
 .admin-section {
-  border: 1px solid rgb(0, 0, 0);
+  color: white;
+  border: 1px solid white;
   padding: 10px;
   margin: 10px;
 }
 
 .create-admin {
-  border: 2px solid black;
+  border: 2px solid white;
   padding: 10px;
 }
 
 .admin-list-item {
-  border: 1px solid black;
+  border: 1px solid white;
   padding: 10px;
   margin: 5px 0px;
 }
@@ -471,4 +530,11 @@ input:focus {
 .footer {
   background-color: black;
   height: 100px;
+}
+
+#defaultCanvas0 {
+  position:absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
 }

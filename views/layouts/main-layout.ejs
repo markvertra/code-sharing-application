@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/reset.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/addons/p5.dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/addons/p5.sound.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
     <title>Code Sharing Application</title>
 </head>
 <body>
 <div id="main-overlay">
 </div>
-<div class="navbar">
-    <div class="home-box">
-        <a href="/" class="navbar-btn lg-navbar">Home</a>
-    </div>
+
+<div class="navbar nav-up">
     <div class="home-box-sl">
         <a href="/" class="sl-navbar">Home</a>
     </div>
@@ -36,9 +39,6 @@
     <% } %>
     <ul class="navbar-list">
         <li>
-            <a href="/admin" class="navbar-btn lg-navbar">Admin Panel</a>
-        </li>
-        <li>
             <% if (userSignedIn) { %>
                 <a href="/settings" class="navbar-btn lg-navbar">User Settings</a>
             <% } %>
@@ -51,7 +51,7 @@
         <li>
             <% if (userSignedIn) { %>
             <form action="/project/new" method="post" id="create-project-form">
-                <button type="submit" id="create-project-btn" class="navbar-btn lg-navbar">Create Project</button>
+                <button type="submit" id="create-project-btn" class="navbar-btn lg-navbar"><p class = "fooClass">Create Project</p></button>
             </form>
             <% } %>
         </li>
@@ -67,15 +67,15 @@
     </ul>
     </div>
 </div>
-    
+
 <div class="main-content">
 <%- body -%>
 </div>
 
 <div class="footer">
-    
-</div>
 
+</div>
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.3/svg.js"></script>
 <script
 src="https://code.jquery.com/jquery-3.2.1.min.js"
 integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

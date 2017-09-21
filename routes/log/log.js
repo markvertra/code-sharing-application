@@ -6,7 +6,7 @@ const passport = require("passport");
 const { ensureLoggedIn } = require("connect-ensure-login");
 
 router.get('/login', (req, res, next) => {
-  res.render('login', {"message": req.flash("error")});
+  res.render('login', {"message": req.flash("error"), layout: 'layouts/layout'});
 });
 
 router.post('/login', passport.authenticate("local-login", {
@@ -22,7 +22,7 @@ router.get('/logout', (req, res, next) => {
 });
 
 router.get('/signup', (req, res, next) => {
-  res.render('signup', {"message": req.flash("error")});
+  res.render('signup', {"message": req.flash("error"), layout: 'layouts/layout'});
 });
 
 router.post('/signup', (req, res, next) => {
