@@ -43,13 +43,13 @@ function createIframe() {
     iframeReplacer($('iframe'));
   }
 
-  var script = createScript("https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.min.js");
+  var script = createScript("https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js");
 
   var newIframe = $('<iframe>');
   newIframe.attr('id', 'results-frame');
 
   newIframe.on('load', function() {
-      $(this).contents().find('body').append(script);
+      $(this).contents().find('head').append(script);
   });
   $('body').append(newIframe);
   pageRenderer();
@@ -64,9 +64,9 @@ function pageRenderer () {
 
 
     let bodyText = "";
-    bodyText = htmlEditor.getValue() + "<script>" + jsEditor.getValue() + "</script>" ;
+    bodyText = htmlEditor.getValue();
     body.append(bodyText);
-    styling.html( '<style>' + cssEditor.getValue() + '</style>');
+    styling.append( '<style>' + cssEditor.getValue() + '</style>' + "<script>" + jsEditor.getValue() + "</script>" );
 
 // moves data to two hidden forms that then push and save the content. getValue is a method of ace
     $("#writeHTML").val(htmlEditor.getValue());

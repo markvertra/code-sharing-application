@@ -1,4 +1,4 @@
-HI!
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +6,15 @@ HI!
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+
+  <style> <%- project.file.fileCSS %></style>
 </head>
 <body>
+
+  <%- project.file.fileHTML %>
   <script src= "https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.min.js"></script>
+  <script> <%- project.file.fileJS %></script>
+
+
 </body>
 </html>

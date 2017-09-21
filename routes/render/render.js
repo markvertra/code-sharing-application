@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 router.get('/:projectID', (req, res, next) => {
   Project.findById((req.params.projectID), (err, project) => {
     if (err) {next(err);}
-    res.render('render/render', { project: project, layout: false });
+    res.render('render/render', { project, layout: false });
   });
 });
 
