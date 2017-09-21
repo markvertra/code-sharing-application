@@ -28,6 +28,32 @@ $(document).ready(function(){
         $("#publish-project-btn").trigger("click");
     });
 
+    $("#write-css").on("click", () => {
+        $("#write-html").show();
+        $("#write-js").show();
+        $("#write-css").hide();
+        $("#CSS-window-container").show();
+        $("#HTML-window-container").hide();
+        $("#JS-window-container").hide();
+    });
+
+    $("#write-js").on("click", () => {
+        $("#write-html").show();
+        $("#write-css").show();
+        $("#write-js").hide();
+        $("#CSS-window-container").hide();
+        $("#HTML-window-container").hide();
+        $("#JS-window-container").show();
+    });
+
+    $("#write-html").on("click", () => {
+        $("#write-css").show();
+        $("#write-js").show();
+        $("#write-html").hide();
+        $("#CSS-window-container").hide();
+        $("#HTML-window-container").show();
+        $("#JS-window-container").hide();
+    });
 
 });
 

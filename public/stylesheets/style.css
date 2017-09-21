@@ -300,7 +300,7 @@ input:focus {
 }
 
 .edit-window-container {
-  width: 34%;
+  width: 100%;
 }
 
 .edit-title-box {
@@ -317,6 +317,47 @@ input:focus {
 .editor {
   height: 300px;
 }
+
+.responsive-change-btns {
+  position: absolute; 
+  top: 95px;
+  right: 0%;
+  display: none; 
+}
+
+@media (max-width: 600px) {
+  #CSS-window-container {
+    display: none;
+  }
+
+  #JS-window-container {
+    display: none; 
+  }
+
+  .responsive-change-btns {
+    display: block;
+  }
+
+  #write-html {
+    display: none; 
+  }
+
+  #write-css {
+    display: inline;
+  }
+
+  #write-js {
+    display: inline;
+  }
+}
+
+.change-editor-btn {
+  background: rgba(0,0,0,0);
+  color: white;
+  border: 1px solid white;
+}
+
+
 
 /* SETTINGS STYLES */
 
@@ -375,10 +416,6 @@ input:focus {
 .profile-project-listing a:hover {
   color: black;
   font-size: 1.02em;
-}
-
-.profile-project-listing {
-  text-align: center;
 }
 
 

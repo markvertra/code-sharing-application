@@ -1,16 +1,22 @@
 <div class="edit-panel-container">
-  <div class="edit-window-container">
+  <div class="edit-window-container" id="HTML-window-container">
     <div class="edit-title-box"><h5>HTML</h5></div> 
     <div id="HTMLeditor" class="editor"><%= project.file.fileHTML %></div>
   </div>
-  <div class="edit-window-container">
+  <div class="edit-window-container" id="CSS-window-container">
     <div class="edit-title-box"><h5>CSS</h5></div>
     <div id="CSSeditor" class="editor"><%= project.file.fileCSS %></div>
   </div>
-  <div class="edit-window-container">
+  <div class="edit-window-container" id="JS-window-container">
     <div class="edit-title-box"><h5>JS</h5></div>
     <div id="JSeditor" class="editor"><%= project.file.fileJS %></div>
   </div>
+</div>
+
+<div class="responsive-change-btns">
+  <button type="submit" class="change-editor-btn" id="write-html">Write HTML</button>
+  <button type="submit" class="change-editor-btn" id="write-css">Write CSS</button>
+  <button type="submit" class="change-editor-btn" id="write-js">Write JS</button>
 </div>
 
 <form action="/project/save/<%= project._id %>" method="post">
