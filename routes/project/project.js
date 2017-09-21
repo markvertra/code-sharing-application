@@ -4,11 +4,7 @@ const Project = require('../../models/project');
 const User = require('../../models/user');
 const bcrypt = require("bcrypt");
 
-
-
 router.post('/save/:projectID', (req, res, next) => {
-
-
   const updateProject = {
     projectName: req.body.projectName,
     file: {fileHTML: req.body.writeHTML,
@@ -16,7 +12,6 @@ router.post('/save/:projectID', (req, res, next) => {
            fileJS: req.body.writeJS,
           }
    };
-
 
   Project.findByIdAndUpdate(req.params.projectID, updateProject, (err, project) => {
 
@@ -70,15 +65,16 @@ router.post('/new', (req, res, next) => {
 
 
 router.get('/:projectID', (req, res, next) => {
-
-  Project.findById((req.params.projectID), (err, project) => {
+  var source = req.params.projectID;
+  console.log(source);
+  Project.findById((source), (err, project) => {
     if (err) {next(err);}
     if (typeof req.user === "undefined") {
       const user = { _id: 999, username: "anonymous" };
-      res.render('project/project', { project: project, user: user, layout: 'layouts/project-layout' });
+      res.render('project/project', {source, project: project, user: user, layout: 'layouts/project-layout' });
     } else {
       const user = req.user;
-      res.render('project/project', { project: project, user: user, layout: 'layouts/project-layout' });
+      res.render('project/project', {source, project: project, user: user, layout: 'layouts/project-layout' });
     }
 
   });
@@ -88,7 +84,7 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
-    res.redirect('/login')
+    res.redirect('/login');
   }
 }
 
