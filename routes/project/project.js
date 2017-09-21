@@ -7,7 +7,8 @@ const bcrypt = require("bcrypt");
 
 
 router.post('/save/:projectID', (req, res, next) => {
-  
+
+
   const updateProject = {
     projectName: req.body.projectName,
     file: {fileHTML: req.body.writeHTML,
@@ -16,10 +17,11 @@ router.post('/save/:projectID', (req, res, next) => {
           }
    };
 
+
   Project.findByIdAndUpdate(req.params.projectID, updateProject, (err, project) => {
-     
+
     if (err) { next(err); }
-  
+    console.log(project.file.fileJS);
     res.redirect("/");
   });
 });
@@ -53,7 +55,7 @@ router.post('/new', (req, res, next) => {
          }
     });
 
-  
+
     newProject.save((err) => {
       if (err) {return next(err);}
 
@@ -68,7 +70,7 @@ router.post('/new', (req, res, next) => {
 
 
 router.get('/:projectID', (req, res, next) => {
-  
+
   Project.findById((req.params.projectID), (err, project) => {
     if (err) {next(err);}
     if (typeof req.user === "undefined") {
@@ -78,13 +80,13 @@ router.get('/:projectID', (req, res, next) => {
       const user = req.user;
       res.render('project/project', { project: project, user: user, layout: 'layouts/project-layout' });
     }
-    
+
   });
 });
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return next(); 
+    return next();
   } else {
     res.redirect('/login')
   }
