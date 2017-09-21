@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const expressLayouts = require('express-ejs-layouts');
+require("dotenv").config();
 
 //Session
 const passport = require('passport');
@@ -29,11 +30,12 @@ const home = require('./routes/home/home');
 const project = require('./routes/project/project');
 const api = require('./routes/api/api');
 const logRoute = require('./routes/log/log');
+const render = require('./routes/render/render');
 
 const app = express();
 
 //Database
-mongoose.connect("mongodb://localhost/code-sharing-application", {useMongoClient: true});
+mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -82,7 +84,7 @@ app.locals.thumbnailRenderer = function (projectId, htmlFile, cssFile, jsFile) {
                   .append('<style></style>')
                   .children('style');
 
-  const bodyText = htmlFile + "<script>" + jsFile + "</script>"
+  const bodyText = htmlFile + "<script>" + jsFile + "</script>";
   body.html(bodyText);
   styling.html(cssFile);
 };
@@ -96,6 +98,7 @@ app.use('/profile', profile);
 app.use('/home', home);
 app.use('/settings', settings);
 app.use('/project', project);
+app.use('/render', render);
 app.use('/', logRoute);
 
 // catch 404 and forward to error handler
