@@ -81,9 +81,9 @@ function updateContent () {
     $("#writeHTML").val(htmlEditor.getValue());
     $("#writeJS").val(jsEditor.getValue());
     $("#writeCSS").val(cssEditor.getValue());
-    $("#hiddenHTML").val($("#writeHTML").val());
-    $("#hiddenJS").val($("#writeJS").val());
-    $("#hiddenCSS").val($("#writeCSS").val());
+    $("#hiddenHTML").val(htmlEditor.getValue());
+    $("#hiddenJS").val(jsEditor.getValue());
+    $("#hiddenCSS").val(cssEditor.getValue());
     $("#projectName").val($("#navbar-project-name-input").val());
     $("#hiddenProjectName").val($("#projectName").val());
 }

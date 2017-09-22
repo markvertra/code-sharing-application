@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../../models/user');
 
 router.get('/myprofile', (req, res, next) => {
-  res.redirect('/profile/' + req.user._id)
+  res.redirect('/profile/' + req.user._id);
 });
 
 router.get('/:profileId', (req, res, next) => {
