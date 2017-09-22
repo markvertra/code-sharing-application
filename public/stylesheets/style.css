@@ -309,6 +309,7 @@ input:focus {
   border: 5px solid black;
   height: 50vh;
   width: 100%;
+  background-color: white;
 }
 
 .hidden {
