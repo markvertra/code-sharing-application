@@ -147,7 +147,7 @@ input:focus {
   bottom: 0;
   right: 0;
   display: flex;
-  opacity: 0.7;
+  opacity: 0.9;
   justify-content: space-between;
   height: 90px;
   background-color: black;
